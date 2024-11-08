@@ -1,10 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlxjd57unamns"]
+[gd_scene load_steps=3 format=3 uid="uid://digqcr4afir2i"]
 
 [ext_resource type="Script" path="res://sword.gd" id="1_agw7x"]
-[ext_resource type="PackedScene" uid="uid://dwsclgjodu1x2" path="res://slash.tscn" id="2_ea361"]
+[ext_resource type="PackedScene" uid="uid://d0xhf788bwkye" path="res://slash.tscn" id="2_ea361"]
 
-[node name="Sword" type="Node2D" node_paths=PackedStringArray("sprite")]
+[node name="Sword" type="Node2D"]
 script = ExtResource("1_agw7x")
-sprite = NodePath("")
 slash = ExtResource("2_ea361")
 weapon_cooldown = 1.0
