@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://fr21qkgimk2y"]
+[gd_scene load_steps=4 format=3 uid="uid://fr21qkgimk2y"]
 
 [ext_resource type="Texture2D" uid="uid://b3nihxsijlr51" path="res://icon.svg" id="1_po7hu"]
+[ext_resource type="PackedScene" uid="uid://dxregbveel1vb" path="res://player.tscn" id="2_mdagh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74suc"]
 size = Vector2(130, 130)
@@ -14,3 +15,7 @@ shape = SubResource("RectangleShape2D_74suc")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 texture = ExtResource("1_po7hu")
+
+[node name="Player" parent="." instance=ExtResource("2_mdagh")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
