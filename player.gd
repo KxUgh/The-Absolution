@@ -10,7 +10,8 @@ func _physics_process(delta: float) -> void:
 	var x_direction: float = Input.get_axis("left", "right")
 	var y_direction: float = Input.get_axis("up", "down")
 	
-	velocity.x = lerp(velocity.x,speed * x_direction,acceleration * delta)
-	velocity.y = lerp(velocity.y,speed * y_direction,acceleration * delta)
+	var direction: Vector2 = Vector2(x_direction,y_direction).normalized()
+	
+	velocity = lerp(velocity,speed * direction, acceleration * delta)
 
 	move_and_slide()
