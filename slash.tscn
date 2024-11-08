@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://dwsclgjodu1x2"]
+
+[ext_resource type="Texture2D" uid="uid://bp8n8igocm65b" path="res://slash.png" id="1_1tbr3"]
+[ext_resource type="Script" path="res://slash.gd" id="1_a0lvk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wt3d"]
+size = Vector2(27.5, 159.875)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ecvx"]
+atlas = ExtResource("1_1tbr3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfn7h"]
+atlas = ExtResource("1_1tbr3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3om67"]
+atlas = ExtResource("1_1tbr3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pgmi"]
+atlas = ExtResource("1_1tbr3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2taaq"]
+atlas = ExtResource("1_1tbr3")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sn0ar"]
+atlas = ExtResource("1_1tbr3")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xsqsg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ecvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfn7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3om67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pgmi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2taaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sn0ar")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Slash" type="Area2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_a0lvk")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(104.75, 0)
+shape = SubResource("RectangleShape2D_0wt3d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(48, -1)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_xsqsg")
+autoplay = "default"
