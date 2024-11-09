@@ -1,8 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://dv80f7odxptib"]
+[gd_scene load_steps=31 format=3 uid="uid://dv80f7odxptib"]
 
 [ext_resource type="Script" path="res://Main_character/player.gd" id="1_lyb3v"]
 [ext_resource type="Texture2D" uid="uid://bv2my8cgx3ahk" path="res://Main_character/dwarf_idle.png" id="3_56bcf"]
 [ext_resource type="PackedScene" uid="uid://dlxjd57unamns" path="res://Main_character/sword.tscn" id="3_jdqdq"]
+[ext_resource type="Texture2D" uid="uid://cn34sa00pio7j" path="res://Main_character/dwarf_walk_left.png" id="4_u0ghc"]
+[ext_resource type="Texture2D" uid="uid://dfhd4tuoj3to2" path="res://Main_character/dwarf_walk_right.png" id="5_ainvn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2r00u"]
 size = Vector2(12, 20)
@@ -83,6 +85,22 @@ region = Rect2(544, 0, 32, 32)
 atlas = ExtResource("3_56bcf")
 region = Rect2(576, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5y4w"]
+atlas = ExtResource("4_u0ghc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16fhj"]
+atlas = ExtResource("4_u0ghc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa2i3"]
+atlas = ExtResource("5_ainvn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uh54m"]
+atlas = ExtResource("5_ainvn")
+region = Rect2(32, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_g5bci"]
 animations = [{
 "frames": [{
@@ -144,11 +162,34 @@ animations = [{
 "texture": SubResource("AtlasTexture_185b8")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Idle",
 "speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5y4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16fhj")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa2i3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uh54m")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 4.0
 }]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon")]
+position = Vector2(-1, 0)
 script = ExtResource("1_lyb3v")
 speed = 500.0
 acceleration = 5.0
@@ -161,8 +202,8 @@ shape = SubResource("RectangleShape2D_2r00u")
 
 [node name="Sword" parent="." instance=ExtResource("3_jdqdq")]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, -15)
 sprite_frames = SubResource("SpriteFrames_g5bci")
-autoplay = "default"
-frame_progress = 0.540025
+animation = &"Right"
+autoplay = "Idle"
