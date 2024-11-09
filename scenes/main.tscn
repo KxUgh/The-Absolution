@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://fr21qkgimk2y"]
 
-[ext_resource type="Texture2D" uid="uid://b3nihxsijlr51" path="res://icon.svg" id="1_po7hu"]
-[ext_resource type="PackedScene" uid="uid://dv80f7odxptib" path="res://player.tscn" id="2_mdagh"]
-[ext_resource type="Script" path="res://camera.gd" id="3_jio6w"]
+[ext_resource type="Texture2D" uid="uid://b3nihxsijlr51" path="res://asses/icon.svg" id="1_iq4m2"]
+[ext_resource type="PackedScene" uid="uid://dv80f7odxptib" path="res://scenes/player.tscn" id="2_nuiro"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="3_ampui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74suc"]
 size = Vector2(130, 130)
@@ -15,11 +15,11 @@ size = Vector2(130, 130)
 shape = SubResource("RectangleShape2D_74suc")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-texture = ExtResource("1_po7hu")
+texture = ExtResource("1_iq4m2")
 
-[node name="Player" parent="." instance=ExtResource("2_mdagh")]
+[node name="Player" parent="." instance=ExtResource("2_nuiro")]
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
-script = ExtResource("3_jio6w")
+script = ExtResource("3_ampui")
 player = NodePath("../Player")
 stiffness = 4.0

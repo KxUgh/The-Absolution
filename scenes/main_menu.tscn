@@ -1,0 +1,104 @@
+[gd_scene load_steps=6 format=3 uid="uid://bubx32ldenwfh"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_h6ljb"]
+[ext_resource type="Texture2D" uid="uid://b3nihxsijlr51" path="res://asses/icon.svg" id="1_kv2id"]
+[ext_resource type="PackedScene" uid="uid://di0ho40hp5di8" path="res://scenes/options_menu.tscn" id="3_xd4sc"]
+
+[sub_resource type="SystemFont" id="SystemFont_pa6jv"]
+font_names = PackedStringArray("Nirmala UI")
+font_weight = 600
+
+[sub_resource type="SystemFont" id="SystemFont_htgte"]
+font_names = PackedStringArray("Nirmala UI")
+font_weight = 999
+
+[node name="Main_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h6ljb")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_kv2id")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Separator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = SubResource("SystemFont_pa6jv")
+theme_override_font_sizes/font_size = 80
+text = "DIE OR BE DOUGHT"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Separator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Start_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_htgte")
+keep_pressed_outside = true
+text = "Game the Game"
+
+[node name="Options_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_htgte")
+keep_pressed_outside = true
+text = "Opt the Options"
+
+[node name="Exit_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_htgte")
+keep_pressed_outside = true
+text = "Exit the Exit"
+
+[node name="Options_Menu" parent="." instance=ExtResource("3_xd4sc")]
+visible = false
+layout_mode = 1
