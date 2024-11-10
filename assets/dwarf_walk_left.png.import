@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp8n8igocm65b"
-path="res://.godot/imported/slash.png-c0f87e94f85007d35447d0bee74226e2.ctex"
+uid="uid://cn34sa00pio7j"
+path="res://.godot/imported/dwarf_walk_left.png-70ae18f3ffe2ae85065740242003e6fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Main_character/slash.png"
-dest_files=["res://.godot/imported/slash.png-c0f87e94f85007d35447d0bee74226e2.ctex"]
+source_file="res://assets/dwarf_walk_left.png"
+dest_files=["res://.godot/imported/dwarf_walk_left.png-70ae18f3ffe2ae85065740242003e6fe.ctex"]
 
 [params]
 

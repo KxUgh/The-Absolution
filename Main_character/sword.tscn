@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlxjd57unamns"]
-
-[ext_resource type="Script" path="res://Main_character/sword.gd" id="1_agw7x"]
-[ext_resource type="PackedScene" uid="uid://dwsclgjodu1x2" path="res://Main_character/slash.tscn" id="2_ea361"]
-
-[node name="Sword" type="Node2D"]
-script = ExtResource("1_agw7x")
-slash = ExtResource("2_ea361")
-weapon_cooldown = 1.0

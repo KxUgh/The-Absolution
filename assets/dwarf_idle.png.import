@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cn34sa00pio7j"
-path="res://.godot/imported/dwarf_walk_left.png-4e69de5551d4ea144f7cf69ae3ea1a16.ctex"
+uid="uid://bv2my8cgx3ahk"
+path="res://.godot/imported/dwarf_idle.png-83422c694927e2f2099faf2187327d1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Main_character/dwarf_walk_left.png"
-dest_files=["res://.godot/imported/dwarf_walk_left.png-4e69de5551d4ea144f7cf69ae3ea1a16.ctex"]
+source_file="res://assets/dwarf_idle.png"
+dest_files=["res://.godot/imported/dwarf_idle.png-83422c694927e2f2099faf2187327d1e.ctex"]
 
 [params]
 

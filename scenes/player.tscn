@@ -1,10 +1,10 @@
 [gd_scene load_steps=31 format=3 uid="uid://dv80f7odxptib"]
 
-[ext_resource type="Script" path="res://Main_character/player.gd" id="1_lyb3v"]
-[ext_resource type="Texture2D" uid="uid://bv2my8cgx3ahk" path="res://Main_character/dwarf_idle.png" id="3_56bcf"]
-[ext_resource type="PackedScene" uid="uid://dlxjd57unamns" path="res://Main_character/sword.tscn" id="3_jdqdq"]
-[ext_resource type="Texture2D" uid="uid://cn34sa00pio7j" path="res://Main_character/dwarf_walk_left.png" id="4_u0ghc"]
-[ext_resource type="Texture2D" uid="uid://dfhd4tuoj3to2" path="res://Main_character/dwarf_walk_right.png" id="5_ainvn"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_lyb3v"]
+[ext_resource type="Texture2D" uid="uid://bv2my8cgx3ahk" path="res://assets/dwarf_idle.png" id="3_56bcf"]
+[ext_resource type="PackedScene" uid="uid://dlxjd57unamns" path="res://scenes/sword.tscn" id="3_jdqdq"]
+[ext_resource type="Texture2D" uid="uid://cn34sa00pio7j" path="res://assets/dwarf_walk_left.png" id="4_u0ghc"]
+[ext_resource type="Texture2D" uid="uid://dfhd4tuoj3to2" path="res://assets/dwarf_walk_right.png" id="5_ainvn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2r00u"]
 size = Vector2(12, 20)
