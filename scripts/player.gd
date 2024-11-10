@@ -22,17 +22,23 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	if Input.is_action_just_pressed("attack"):
+		
 		var mouse_position: Vector2 = get_global_mouse_position()
+		
+		if mouse_position.x < 0:
+			animations.play("Attack_Left")
+		else:
+			animations.play("Attack_Right")
+		
 		weapon.attack(position,mouse_position)
 		
 	var directionAnim = "Idle"
 	
-	
 	if x_direction < 0: 
 		directionAnim = "Left"
-	elif x_direction > 0: 
-		directionAnim = "Right"
-	else: 
+	elif x_direction == 0 and y_direction == 0: 
 		directionAnim = "Idle"
+	else: 
+		directionAnim = "Right"
 	
 	animations.play(directionAnim)
