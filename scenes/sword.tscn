@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://digqcr4afir2i"]
+[gd_scene load_steps=3 format=3 uid="uid://dlxjd57unamns"]
 
 [ext_resource type="Script" path="res://scripts/sword.gd" id="1_agw7x"]
-[ext_resource type="PackedScene" uid="uid://d0xhf788bwkye" path="res://scenes/slash.tscn" id="2_ea361"]
+[ext_resource type="PackedScene" uid="uid://dwsclgjodu1x2" path="res://scenes/slash.tscn" id="2_ea361"]
 
 [node name="Sword" type="Node2D"]
 script = ExtResource("1_agw7x")
