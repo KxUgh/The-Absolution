@@ -7,3 +7,4 @@
 script = ExtResource("1_agw7x")
 slash = ExtResource("2_ea361")
 weapon_cooldown = 1.0
+damage = 5.0
