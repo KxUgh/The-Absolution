@@ -1,58 +1,89 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwsclgjodu1x2"]
+[gd_scene load_steps=15 format=3 uid="uid://dwsclgjodu1x2"]
 
-[ext_resource type="Texture2D" uid="uid://bp8n8igocm65b" path="res://assets/slash.png" id="1_1tbr3"]
 [ext_resource type="Script" path="res://scripts/slash.gd" id="1_a0lvk"]
+[ext_resource type="Texture2D" uid="uid://c1rqpkevcisjm" path="res://assets/hammer_slash_left.png" id="2_sisrt"]
+[ext_resource type="Texture2D" uid="uid://cl03ftn2w4cs6" path="res://assets/hammer_slash_right.png" id="3_1ebmu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wt3d"]
-size = Vector2(27.5, 36)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypmvf"]
+atlas = ExtResource("2_sisrt")
+region = Rect2(0, 0, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3ecvx"]
-atlas = ExtResource("1_1tbr3")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ml132"]
+atlas = ExtResource("2_sisrt")
+region = Rect2(32, 0, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rfn7h"]
-atlas = ExtResource("1_1tbr3")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jthqs"]
+atlas = ExtResource("2_sisrt")
+region = Rect2(64, 0, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3om67"]
-atlas = ExtResource("1_1tbr3")
-region = Rect2(64, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkxfu"]
+atlas = ExtResource("2_sisrt")
+region = Rect2(96, 0, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7pgmi"]
-atlas = ExtResource("1_1tbr3")
-region = Rect2(96, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vu0p"]
+atlas = ExtResource("2_sisrt")
+region = Rect2(128, 0, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2taaq"]
-atlas = ExtResource("1_1tbr3")
-region = Rect2(128, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp25r"]
+atlas = ExtResource("3_1ebmu")
+region = Rect2(0, 0, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sn0ar"]
-atlas = ExtResource("1_1tbr3")
-region = Rect2(160, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqi6q"]
+atlas = ExtResource("3_1ebmu")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxll7"]
+atlas = ExtResource("3_1ebmu")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ga8ik"]
+atlas = ExtResource("3_1ebmu")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cs6ye"]
+atlas = ExtResource("3_1ebmu")
+region = Rect2(128, 0, 32, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xsqsg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3ecvx")
+"texture": SubResource("AtlasTexture_ypmvf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rfn7h")
+"texture": SubResource("AtlasTexture_ml132")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3om67")
+"texture": SubResource("AtlasTexture_jthqs")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7pgmi")
+"texture": SubResource("AtlasTexture_qkxfu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2taaq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sn0ar")
+"texture": SubResource("AtlasTexture_2vu0p")
 }],
 "loop": false,
-"name": &"default",
+"name": &"Slash_Left",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp25r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqi6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxll7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ga8ik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cs6ye")
+}],
+"loop": false,
+"name": &"Slash_Right",
 "speed": 15.0
 }]
 
@@ -60,11 +91,10 @@ animations = [{
 script = ExtResource("1_a0lvk")
 sprite = NodePath("AnimatedSprite2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(18, 0)
-shape = SubResource("RectangleShape2D_0wt3d")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(16, 0)
 sprite_frames = SubResource("SpriteFrames_xsqsg")
-autoplay = "default"
+animation = &"Slash_Right"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(7, -33, 24, -31, 32, -24, 32, 20, 24, 30, 6, 30)
