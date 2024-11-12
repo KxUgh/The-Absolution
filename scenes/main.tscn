@@ -39,3 +39,5 @@ position = Vector2(123, -7)
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-2, 0)
 navigation_polygon = SubResource("NavigationPolygon_eb0bm")
+horizontal_pan_distance = 15.0
+vertical_pan_distance = 15.0
