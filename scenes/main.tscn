@@ -26,3 +26,5 @@ zoom = Vector2(3, 3)
 script = ExtResource("3_jrjlv")
 player = NodePath("../Player")
 stiffness = 10.0
+horizontal_pan_distance = 15.0
+vertical_pan_distance = 15.0
