@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5kw1q1btp5t4"]
+
+[ext_resource type="Script" path="res://scripts/zombie.gd" id="1_qbjfa"]
+[ext_resource type="Texture2D" uid="uid://dsryj7wvqas8x" path="res://assets/icon.svg" id="2_u0owg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ej3c4"]
+size = Vector2(32, 32)
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
+motion_mode = 1
+script = ExtResource("1_qbjfa")
+nav_agent = NodePath("NavigationAgent2D")
+speed = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ej3c4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_u0owg")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
