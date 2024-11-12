@@ -189,7 +189,6 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon")]
-position = Vector2(-1, 0)
 script = ExtResource("1_lyb3v")
 speed = 500.0
 acceleration = 5.0
@@ -197,13 +196,14 @@ weapon = NodePath("Sword")
 attack_cooldown = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -10)
+position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_2r00u")
 
 [node name="Sword" parent="." instance=ExtResource("3_jdqdq")]
+position = Vector2(0, -10)
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(2, -15)
+position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_g5bci")
 animation = &"Right"
 autoplay = "Idle"
