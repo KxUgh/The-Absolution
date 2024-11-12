@@ -14,7 +14,7 @@ func attack(origin_position: Vector2, target_position: Vector2) -> void:
 	var slash_instance: Attack = slash.instantiate()
 	slash_instance.rotation = angle
 	
-	if target_position.x < 0:
+	if target_position.x - origin_position.x < 0:
 		slash_instance.sprite.play("Slash_Left")
 	else:
 		slash_instance.sprite.play("Slash_Right")
