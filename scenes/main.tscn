@@ -1,11 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://fr21qkgimk2y"]
+[gd_scene load_steps=7 format=3 uid="uid://fr21qkgimk2y"]
 
 [ext_resource type="Texture2D" uid="uid://dsryj7wvqas8x" path="res://assets/icon.svg" id="1_po7hu"]
 [ext_resource type="PackedScene" uid="uid://dv80f7odxptib" path="res://scenes/player.tscn" id="2_mdagh"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="3_jrjlv"]
+[ext_resource type="PackedScene" uid="uid://b5kw1q1btp5t4" path="res://scenes/zombie.tscn" id="4_68k5k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74suc"]
 size = Vector2(130, 130)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_eb0bm"]
+vertices = PackedVector2Array(183.75, 97.9688, -132.977, 97.1484, -50.3828, 68.0313, 68.9063, 70.1797, -62.9375, 50.9219, -180.789, 92.7578, -178.141, -95, -61.9063, -70.0938, 179.227, -95, 70.0781, -68.9063)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(7, 6, 8, 9), PackedInt32Array(8, 0, 3, 9)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(189, -105, -188, -105, -191, 107, -53, 58, -52, -60, 60, -59, 59, 60, -52, 58, -191, 107, 194, 108)])
 
 [node name="Node2D" type="Node2D"]
 
@@ -26,3 +32,10 @@ zoom = Vector2(3, 3)
 script = ExtResource("3_jrjlv")
 player = NodePath("../Player")
 stiffness = 10.0
+
+[node name="Enemy" parent="." instance=ExtResource("4_68k5k")]
+position = Vector2(123, -7)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-2, 0)
+navigation_polygon = SubResource("NavigationPolygon_eb0bm")

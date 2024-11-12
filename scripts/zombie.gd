@@ -12,7 +12,7 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	
 	var direction: Vector2 = get_navigation_direction()
-	print(get_distance_to_target())
+	
 	if get_distance_to_target() > 30:
 		velocity = direction * speed
 	else:
@@ -34,3 +34,13 @@ func get_distance_to_target() -> float:
 	if target:
 		return (target.position - position).length()
 	return INF
+	
+func take_damage(damage: float) -> void:
+	health -= damage
+	health = clampf(health,0,max_health)
+	if health == 0:
+		die()
+
+func die() -> void:
+	queue_free()
+	
