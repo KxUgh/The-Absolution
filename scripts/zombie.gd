@@ -35,7 +35,7 @@ func get_distance_to_target() -> float:
 		return (target.position - position).length()
 	return INF
 	
-func take_damage(damage: float) -> void:
+func take_damage(damage: float, _type: Entity_type) -> void:
 	health -= damage
 	health = clampf(health,0,max_health)
 	if health == 0:
