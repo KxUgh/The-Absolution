@@ -24,8 +24,6 @@ shape = SubResource("RectangleShape2D_74suc")
 texture = ExtResource("1_po7hu")
 
 [node name="Player" parent="." instance=ExtResource("2_mdagh")]
-speed = 200.0
-acceleration = 50.0
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 zoom = Vector2(3, 3)
