@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_lyb3v"]
 [ext_resource type="Texture2D" uid="uid://bv2my8cgx3ahk" path="res://assets/dwarf_idle.png" id="3_56bcf"]
-[ext_resource type="PackedScene" uid="uid://dlxjd57unamns" path="res://scenes/sword.tscn" id="3_jdqdq"]
+[ext_resource type="PackedScene" uid="uid://dlxjd57unamns" path="res://scenes/hammer.tscn" id="3_jdqdq"]
 [ext_resource type="Texture2D" uid="uid://dal4u4ldrux4s" path="res://assets/dwarf_attack_left.png" id="3_wkp1m"]
 [ext_resource type="Texture2D" uid="uid://d2ncun13gq0yy" path="res://assets/dwarf_attack_right.png" id="4_ou8u8"]
 [ext_resource type="Texture2D" uid="uid://cn34sa00pio7j" path="res://assets/dwarf_walk_left.png" id="4_u0ghc"]
@@ -623,7 +623,6 @@ shape = SubResource("RectangleShape2D_2r00u")
 
 [node name="Sword" parent="." node_paths=PackedStringArray("weapon_owner") instance=ExtResource("3_jdqdq")]
 weapon_owner = NodePath("..")
-damage = 5.0
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -5)
