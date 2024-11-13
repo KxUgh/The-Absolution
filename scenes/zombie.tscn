@@ -11,6 +11,7 @@ motion_mode = 1
 script = ExtResource("1_qbjfa")
 nav_agent = NodePath("NavigationAgent2D")
 speed = 40.0
+entity_type = 1
 max_health = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
