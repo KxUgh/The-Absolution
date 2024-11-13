@@ -613,8 +613,8 @@ collision_layer = 2
 collision_mask = 13
 motion_mode = 1
 script = ExtResource("1_lyb3v")
-speed = 500.0
-acceleration = 5.0
+base_speed = 200.0
+acceleration = 50.0
 weapon = NodePath("Sword")
 attack_cooldown = 0.5
 

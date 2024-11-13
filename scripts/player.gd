@@ -1,6 +1,6 @@
 extends Entity
 
-@export var speed: float
+@export var base_speed: float
 @export var acceleration: float
 @export var weapon: Weapon
 @export var attack_cooldown: float
@@ -10,6 +10,8 @@ extends Entity
 @onready var animations = $AnimatedSprite
 
 func _physics_process(delta: float) -> void:
+	var speed: float = calculate_speed()
+	
 	since_last_attack += delta
 	since_last_block += delta
 	
@@ -42,10 +44,6 @@ func _physics_process(delta: float) -> void:
 			else:
 				animations.play("Block_Right")
 			since_last_block = 0
-			
-			#Reducing the speed to 0 while blocking (not working)
-			#if not animations.animation_finished:
-			#		speed = 0
 	
 	var directionAnim = "Idle"
 	
@@ -59,3 +57,11 @@ func _physics_process(delta: float) -> void:
 	var specAnimList = ["Attack_Left", "Attack_Right", "Block_Left", "Block_Right"]
 	if animations.animation not in specAnimList or not animations.is_playing():
 		animations.play(directionAnim)
+		
+func calculate_speed() -> float:
+	var current_animation: String = animations.animation
+	match current_animation:
+		"Block_Left","Block_Right":
+			return 0
+		_:
+			return base_speed
