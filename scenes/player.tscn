@@ -615,13 +615,13 @@ motion_mode = 1
 script = ExtResource("1_lyb3v")
 base_speed = 200.0
 acceleration = 50.0
-weapon = NodePath("Sword")
+weapon = NodePath("Hammer")
 attack_cooldown = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2r00u")
 
-[node name="Sword" parent="." node_paths=PackedStringArray("weapon_owner") instance=ExtResource("3_jdqdq")]
+[node name="Hammer" parent="." node_paths=PackedStringArray("weapon_owner") instance=ExtResource("3_jdqdq")]
 weapon_owner = NodePath("..")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
