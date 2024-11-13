@@ -1,6 +1,8 @@
 class_name Player
 extends Entity
 
+signal health_changed()
+
 @export var base_speed: float
 @export var acceleration: float
 @export var weapon: Weapon
@@ -66,3 +68,8 @@ func calculate_speed() -> float:
 			return 0
 		_:
 			return base_speed
+			
+func take_damage(damage: float, _type: Entity_type) -> void:
+	health -= damage
+	health = clampf(health,0,max_health)
+	health_changed.emit()
