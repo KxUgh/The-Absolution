@@ -1,31 +1,20 @@
 [gd_scene format=3 uid="uid://bjy2g2pt7vcj3"]
 
-[node name="Rebind" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Rebind" type="HBoxContainer"]
+anchors_preset = -1
+anchor_right = 0.402
+anchor_bottom = 0.211
+offset_right = 1.36
+offset_bottom = -0.980003
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-offset_right = 40.0
-offset_bottom = 40.0
-alignment = 1
-
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="."]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
 text = "DIRECTION"
 
-[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+[node name="Button" type="Button" parent="."]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_constants/separation = 10
-
-[node name="Button" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "KEY"

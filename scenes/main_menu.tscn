@@ -44,6 +44,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = "DIE OR BE DOUGHT"
 horizontal_alignment = 1
 
@@ -65,6 +66,7 @@ z_index = 1
 custom_minimum_size = Vector2(120, 30)
 layout_mode = 2
 theme = ExtResource("3_ixein")
+theme_override_font_sizes/font_size = 10
 text = "Game the Game"
 
 [node name="Options_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
@@ -72,6 +74,7 @@ z_index = 1
 custom_minimum_size = Vector2(120, 30)
 layout_mode = 2
 theme = ExtResource("3_ixein")
+theme_override_font_sizes/font_size = 10
 text = "Opt the Options"
 
 [node name="Exit_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
@@ -79,6 +82,7 @@ z_index = 1
 custom_minimum_size = Vector2(120, 30)
 layout_mode = 2
 theme = ExtResource("3_ixein")
+theme_override_font_sizes/font_size = 10
 text = "Exit the Exit"
 
 [node name="Options_Menu" parent="." instance=ExtResource("3_xd4sc")]
