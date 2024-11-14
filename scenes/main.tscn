@@ -28,6 +28,7 @@ shape = SubResource("RectangleShape2D_74suc")
 texture = ExtResource("1_po7hu")
 
 [node name="Player" parent="." instance=ExtResource("2_mdagh")]
+position = Vector2(139, 54)
 max_health = 10.0
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
@@ -37,8 +38,8 @@ stiffness = 10.0
 horizontal_pan_distance = 15.0
 vertical_pan_distance = 15.0
 
-[node name="Enemy" parent="." instance=ExtResource("4_68k5k")]
-position = Vector2(123, -7)
+[node name="Zombie" parent="." instance=ExtResource("4_68k5k")]
+position = Vector2(148, -55)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-5, 1)

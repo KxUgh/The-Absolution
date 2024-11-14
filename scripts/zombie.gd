@@ -1,6 +1,10 @@
 extends Enemy
 
 @export var nav_agent: NavigationAgent2D
+@export var weapon: Weapon
+@export var attack_cooldown: float
+
+@onready var since_last_attack = attack_cooldown
 
 var target: Node2D
 
@@ -9,7 +13,8 @@ func _process(_delta: float) -> void:
 	if players:
 		target = players[0]
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	since_last_attack += delta
 	
 	var direction: Vector2 = get_navigation_direction()
 	
@@ -17,6 +22,9 @@ func _physics_process(_delta: float) -> void:
 		velocity = direction * speed
 	else:
 		velocity = Vector2.ZERO
+		if can_attack():
+			weapon.attack(position,target.position)
+			since_last_attack = 0
 	
 	move_and_slide()
 
@@ -43,4 +51,7 @@ func take_damage(damage: float, _type: Entity_type) -> void:
 
 func die() -> void:
 	queue_free()
+	
+func can_attack() -> bool:
+	return since_last_attack > attack_cooldown
 	
