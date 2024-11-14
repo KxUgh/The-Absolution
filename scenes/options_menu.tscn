@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bjy2g2pt7vcj3" path="res://scenes/rebind.tscn" id="3_wmjq5"]
 [ext_resource type="PackedScene" uid="uid://b6iqsayk81inb" path="res://scenes/settings_slider.tscn" id="4_jt32e"]
 
-[node name="Options_Menu" type="Control"]
+[node name="Options_Menu" type="Control" node_paths=PackedStringArray("main_menu_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_48j51")
 script = ExtResource("1_nqmro")
+main_menu_button = NodePath("MarginContainer/VBoxContainer2/Main_Menu_Button")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
