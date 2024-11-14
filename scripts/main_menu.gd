@@ -1,12 +1,12 @@
 class_name MainMenu
 extends Control
 
-@onready var start_button=$MarginContainer/HBoxContainer/VBoxContainer/Start_Button as Button
-@onready var options_button=$MarginContainer/HBoxContainer/VBoxContainer/Options_Button as Button
-@onready var exit_button=$MarginContainer/HBoxContainer/VBoxContainer/Exit_Button as Button
-@onready var start_level=preload("res://scenes/main.tscn") as PackedScene
-@onready var options_menu=$Options_Menu as OptionsMenu
-@onready var margin_containter=$MarginContainer as MarginContainer
+@export var start_button: Button
+@export var options_button: Button
+@export var exit_button: Button
+@export var start_level: PackedScene
+@export var options_menu: OptionsMenu
+@export var margin_containter: MarginContainer
 
 func _ready():
 	start_button.button_up.connect(on_start_pressed)

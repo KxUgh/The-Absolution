@@ -1,7 +1,7 @@
 class_name OptionsMenu
 extends Control
 
-@onready var main_menu_button=$MarginContainer/VBoxContainer2/HBoxContainer/Main_Menu_Button as Button
+@export var main_menu_button: Button
 
 signal goto_main_menu
 
