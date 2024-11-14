@@ -1,55 +1,45 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://35mm8ddi12k2"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://35mm8ddi12k2"]
 
 [ext_resource type="FontFile" uid="uid://bmhjiyg7r5icl" path="res://assets/Jersey10-Regular.ttf" id="1_3sdnd"]
+[ext_resource type="Texture2D" uid="uid://2fsqxrvty8oq" path="res://assets/button.png" id="2_uta2p"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_88muj"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tmbuu"]
-content_margin_left = 4.0
-content_margin_right = 4.0
-bg_color = Color(0.479278, 0.241563, 0.0488432, 1)
-border_width_bottom = 10
-border_color = Color(0.105564, 0.0349007, 0.002676, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-corner_detail = 5
-shadow_color = Color(1, 1, 1, 0.329412)
-shadow_size = 4
-anti_aliasing = false
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_67m2n"]
+texture = ExtResource("2_uta2p")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 11.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wlnfx"]
-content_margin_left = 4.0
-content_margin_right = 4.0
-bg_color = Color(0.479278, 0.241563, 0.0488432, 1)
-border_width_bottom = 10
-border_color = Color(0.105564, 0.0349007, 0.002676, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-corner_detail = 3
-anti_aliasing = false
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_itwls"]
+texture = ExtResource("2_uta2p")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 11.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aqqa8"]
-content_margin_left = 4.0
-content_margin_right = 4.0
-bg_color = Color(0.479278, 0.241563, 0.0488432, 1)
-border_width_top = 10
-border_color = Color(0.105882, 0.0352941, 0.00392157, 0)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-corner_detail = 5
-anti_aliasing = false
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dqouk"]
+load_path = "res://.godot/imported/button_pressed.png-72c3921d1f8d6c8c935f804481f3e257.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3go0m"]
+texture = SubResource("CompressedTexture2D_dqouk")
+texture_margin_left = 7.0
+texture_margin_top = 10.0
+texture_margin_right = 7.0
+texture_margin_bottom = 8.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [resource]
-Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_color = Color(0.866667, 0.866667, 0.866667, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
-Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
 Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 Button/colors/font_outline_color = Color(0, 0, 0, 0)
 Button/colors/font_pressed_color = Color(1, 1, 1, 1)
@@ -66,8 +56,8 @@ Button/constants/outline_size = 0
 Button/font_sizes/font_size = 12
 Button/fonts/font = ExtResource("1_3sdnd")
 Button/styles/focus = SubResource("StyleBoxEmpty_88muj")
-Button/styles/hover = SubResource("StyleBoxFlat_tmbuu")
-Button/styles/normal = SubResource("StyleBoxFlat_wlnfx")
-Button/styles/pressed = SubResource("StyleBoxFlat_aqqa8")
+Button/styles/hover = SubResource("StyleBoxTexture_67m2n")
+Button/styles/normal = SubResource("StyleBoxTexture_itwls")
+Button/styles/pressed = SubResource("StyleBoxTexture_3go0m")
 Label/font_sizes/font_size = 24
 Label/fonts/font = ExtResource("1_3sdnd")
