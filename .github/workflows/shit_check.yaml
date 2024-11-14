@@ -1,0 +1,22 @@
+name: Shit Check
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  check-dollar-sign:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Look for shit in Diff
+        run: |
+          if git diff --name-only origin/main...HEAD | xargs -I {} git diff origin/main...HEAD {} | grep -q '\$'; then
+            echo "Error: Pull request is shit."
+            exit 1
+          else
+            echo "PR is (maybe) not shit."
+          fi
