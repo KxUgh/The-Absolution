@@ -1,24 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5kw1q1btp5t4"]
+[gd_scene load_steps=5 format=3 uid="uid://b5kw1q1btp5t4"]
 
 [ext_resource type="Script" path="res://scripts/zombie.gd" id="1_qbjfa"]
 [ext_resource type="Texture2D" uid="uid://dsryj7wvqas8x" path="res://assets/icon.svg" id="2_u0owg"]
+[ext_resource type="PackedScene" uid="uid://dlxjd57unamns" path="res://scenes/hammer.tscn" id="3_bgsne"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ej3c4"]
-size = Vector2(32, 32)
+[sub_resource type="CircleShape2D" id="CircleShape2D_gtea8"]
+radius = 16.0
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
+[node name="Zombie" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "weapon")]
+collision_layer = 8
+collision_mask = 7
 motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_qbjfa")
 nav_agent = NodePath("NavigationAgent2D")
+weapon = NodePath("Hammer")
+attack_cooldown = 3.0
 speed = 40.0
 entity_type = 1
 max_health = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ej3c4")
+shape = SubResource("CircleShape2D_gtea8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_u0owg")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Hammer" parent="." node_paths=PackedStringArray("weapon_owner") instance=ExtResource("3_bgsne")]
+weapon_owner = NodePath("..")
