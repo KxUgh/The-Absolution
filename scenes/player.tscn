@@ -610,7 +610,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "weapon") groups=["player"]]
 collision_layer = 2
-collision_mask = 13
+collision_mask = 29
 motion_mode = 1
 script = ExtResource("1_lyb3v")
 sprite = NodePath("AnimatedSprite")
