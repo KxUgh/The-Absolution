@@ -3,6 +3,7 @@ extends Enemy
 @export var nav_agent: NavigationAgent2D
 @export var weapon: Weapon
 @export var attack_cooldown: float
+@export var sprite: AnimatedSprite2D
 
 @onready var since_last_attack = attack_cooldown
 
@@ -23,9 +24,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = Vector2.ZERO
 		if can_attack():
+			if target.position.x - position.x < 0:
+				sprite.play("Attack_Left")
+			else:
+				sprite.play("Attack_Right")
 			weapon.attack(position,target.position)
 			since_last_attack = 0
-	
+	print(direction)
 	move_and_slide()
 
 func get_navigation_direction() -> Vector2:
@@ -50,6 +55,7 @@ func take_damage(damage: float, _type: Entity_type) -> void:
 		die()
 
 func die() -> void:
+	sprite.play("Death")
 	queue_free()
 	
 func can_attack() -> bool:
