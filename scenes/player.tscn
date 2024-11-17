@@ -629,5 +629,7 @@ weapon_owner = NodePath("..")
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_g5bci")
-animation = &"Death_Monster"
+animation = &"Hit"
 autoplay = "Idle"
+frame = 7
+frame_progress = 1.0
