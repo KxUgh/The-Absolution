@@ -30,7 +30,6 @@ func _physics_process(delta: float) -> void:
 				sprite.play("Attack_Right")
 			weapon.attack(position,target.position)
 			since_last_attack = 0
-	print(direction)
 	move_and_slide()
 
 func get_navigation_direction() -> Vector2:

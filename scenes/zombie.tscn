@@ -310,7 +310,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7flyn")
 }],
-"loop": false,
+"loop": true,
 "name": &"Left",
 "speed": 5.0
 }, {
@@ -327,12 +327,12 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dembm")
 }],
-"loop": false,
+"loop": true,
 "name": &"Right",
 "speed": 5.0
 }]
 
-[node name="Zombie" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "weapon")]
+[node name="Zombie" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "weapon", "sprite")]
 collision_layer = 8
 collision_mask = 7
 motion_mode = 1
@@ -341,6 +341,7 @@ script = ExtResource("1_qbjfa")
 nav_agent = NodePath("NavigationAgent2D")
 weapon = NodePath("Hammer")
 attack_cooldown = 3.0
+sprite = NodePath("AnimatedSprite2D")
 speed = 40.0
 entity_type = 1
 max_health = 10.0
@@ -356,6 +357,10 @@ shape = SubResource("CircleShape2D_gtea8")
 weapon_owner = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 22)
 sprite_frames = SubResource("SpriteFrames_u22cg")
-animation = &"Idle"
+animation = &"Attack_Left"
 autoplay = "Idle"
+frame = 5
+frame_progress = 1.0
+offset = Vector2(0, -22)

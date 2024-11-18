@@ -627,9 +627,8 @@ shape = SubResource("RectangleShape2D_2r00u")
 weapon_owner = NodePath("..")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(0, 10)
 sprite_frames = SubResource("SpriteFrames_g5bci")
-animation = &"Hit"
+animation = &"Block_Right"
 autoplay = "Idle"
-frame = 7
-frame_progress = 1.0
+offset = Vector2(0, -15)

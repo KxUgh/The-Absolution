@@ -306,7 +306,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_en4sf")
 }],
-"loop": false,
+"loop": true,
 "name": &"Left",
 "speed": 7.0
 }, {
@@ -323,7 +323,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6rn4x")
 }],
-"loop": false,
+"loop": true,
 "name": &"Right",
 "speed": 7.0
 }]
@@ -336,7 +336,8 @@ scale = Vector2(1.22835, 1.13528)
 shape = SubResource("CapsuleShape2D_2ng4o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 22)
 sprite_frames = SubResource("SpriteFrames_ay5tw")
-animation = &"Idle"
+animation = &"Cast"
 autoplay = "Idle"
-frame_progress = 0.378305
+offset = Vector2(0, -22)

@@ -233,7 +233,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8inly")
 }],
-"loop": false,
+"loop": true,
 "name": &"Left",
 "speed": 3.0
 }, {
@@ -276,7 +276,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_38vkp")
 }],
-"loop": false,
+"loop": true,
 "name": &"Right",
 "speed": 3.0
 }]
@@ -289,8 +289,8 @@ scale = Vector2(1.44, 2.72)
 shape = SubResource("CircleShape2D_3co1l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 33)
 sprite_frames = SubResource("SpriteFrames_a12an")
-animation = &"Attack"
+animation = &"Left"
 autoplay = "Idle"
-frame = 7
-frame_progress = 1.0
+offset = Vector2(0, -33)
