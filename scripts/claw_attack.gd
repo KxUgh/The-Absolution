@@ -5,3 +5,4 @@ extends Attack
 func _process(_delta: float) -> void:
 	if not sprite.is_playing():
 		queue_free()
+	monitoring = sprite.frame in [1,4]

@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://ctc3scbay3e5a"]
+
+[ext_resource type="Script" path="res://scripts/claw_attack.gd" id="1_3e1ln"]
+[ext_resource type="Texture2D" uid="uid://d1eupenrs33dm" path="res://assets/Inquisition/Gheist_Stab.png" id="2_k7bf6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tegiy"]
+atlas = ExtResource("2_k7bf6")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8aw8i"]
+atlas = ExtResource("2_k7bf6")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsh8j"]
+atlas = ExtResource("2_k7bf6")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hctqa"]
+atlas = ExtResource("2_k7bf6")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_biq2d"]
+atlas = ExtResource("2_k7bf6")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arq0n"]
+atlas = ExtResource("2_k7bf6")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xsqsg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tegiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8aw8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsh8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hctqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_biq2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arq0n")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 10.0
+}]
+
+[node name="FlurryAttack" type="Area2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_3e1ln")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(33, 0)
+sprite_frames = SubResource("SpriteFrames_xsqsg")
+animation = &"hit"
+autoplay = "hit"
+frame = 5
+frame_progress = 1.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(21, 4)
+scale = Vector2(1.48558, 1)
+polygon = PackedVector2Array(24.233, -7, 24.233, 10, -14.809, 11, -14.809, -9)
