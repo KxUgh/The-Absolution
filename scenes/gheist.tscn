@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bred8rgg7f1vs" path="res://assets/Inquisition/Gheist_Idle.png" id="7_57b0d"]
 [ext_resource type="Texture2D" uid="uid://b2r4xtqyq63l6" path="res://assets/Inquisition/Gheist_Walk_Left.png" id="8_rqjfp"]
 [ext_resource type="Texture2D" uid="uid://5r5q137rln6j" path="res://assets/Inquisition/Gheist_Walk_Right.png" id="9_sp63o"]
-[ext_resource type="PackedScene" uid="uid://vajbpdkijsrp" path="res://scenes/gheist_blades.tscn" id="10_fh5uv"]
+[ext_resource type="PackedScene" path="res://scenes/gheist_blades.tscn" id="10_fh5uv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ng4o"]
 
