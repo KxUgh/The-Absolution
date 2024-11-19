@@ -3,6 +3,7 @@ extends Enemy
 enum State{
 	IDLE,
 	MOVING,
+	CHANNELING,
 	ATTACKING,
 	DEAD,
 }
@@ -12,6 +13,7 @@ enum State{
 @export var weapon: Weapon
 @export var sprite: AnimatedSprite2D
 @export var attack_cooldown: float
+@export var channeling_duration: float
 @export var attack_duration: float
 @export var hit_cooldown: float
 
@@ -20,6 +22,7 @@ enum State{
 @onready var state = State.IDLE
 
 var target: Node2D
+var attack_position: Vector2
 
 func _ready() -> void:
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
@@ -42,9 +45,12 @@ func _physics_process(delta: float) -> void:
 func determine_state() -> State:
 	if state == State.DEAD:
 		return State.DEAD
-
-	if (get_distance_to_target() < 30 and can_attack()) or (since_last_attack < attack_duration and state == State.ATTACKING):
+		
+	if state in [State.CHANNELING, State.ATTACKING] and channeling_duration < since_last_attack and since_last_attack < attack_duration + channeling_duration:
 		return State.ATTACKING
+
+	if (get_distance_to_target() < 30 and can_attack()) or (since_last_attack < channeling_duration and state == State.CHANNELING):
+		return State.CHANNELING
 
 	if velocity.length() > 0.0001:
 		return State.MOVING
@@ -56,14 +62,22 @@ func process_state(previous_state: State) -> void:
 		State.IDLE:
 			move_and_slide()
 			sprite.play("Idle")
-		State.ATTACKING:
+			
+		State.CHANNELING:
 			if previous_state != state:
 				since_last_attack = 0
-				if target.position.x - position.x < 0:
+				attack_position = target.position
+				if attack_position.x - position.x < 0:
+					Common.play_sprite_animation_duration(sprite, "Channel_Attack_Left", channeling_duration)
+				else:
+					Common.play_sprite_animation_duration(sprite, "Channel_Attack_Right", channeling_duration)
+		State.ATTACKING:
+			if previous_state != state:
+				if attack_position.x - position.x < 0:
 					Common.play_sprite_animation_duration(sprite, "Attack_Left", attack_duration)
 				else:
 					Common.play_sprite_animation_duration(sprite, "Attack_Right", attack_duration)
-				weapon.attack(position,target.position)
+				weapon.attack(position,attack_position)
 		State.MOVING:
 			move_and_slide()
 			if velocity.x > 0:
