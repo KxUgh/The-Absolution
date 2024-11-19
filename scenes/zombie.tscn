@@ -344,7 +344,7 @@ animations = [{
 
 [node name="Zombie" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "nav_timer", "weapon", "sprite")]
 collision_layer = 8
-collision_mask = 7
+collision_mask = 23
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_qbjfa")
