@@ -2,31 +2,15 @@
 
 [ext_resource type="Script" path="res://scripts/zombie.gd" id="1_qbjfa"]
 [ext_resource type="Texture2D" uid="uid://5ffpto2dmbuy" path="res://assets/Monsters/Zombie_Attack_Left.png" id="2_3b8kx"]
-[ext_resource type="PackedScene" uid="uid://dlxjd57unamns" path="res://scenes/hammer.tscn" id="3_bgsne"]
 [ext_resource type="Texture2D" uid="uid://0eurq6fwpjdk" path="res://assets/Monsters/Zombie_Attack_Right.png" id="3_f6tr4"]
 [ext_resource type="Texture2D" uid="uid://vjbgi7vuat0l" path="res://assets/Monsters/Zombie_Death.png" id="4_b4vlk"]
 [ext_resource type="Texture2D" uid="uid://cklotfnddgsm6" path="res://assets/Monsters/Zombie_Idle.png" id="5_yau7h"]
 [ext_resource type="Texture2D" uid="uid://bpsw0vr4lnthg" path="res://assets/Monsters/Zombie_Walk_Left.png" id="6_bwop6"]
 [ext_resource type="Texture2D" uid="uid://qny26n7qop8x" path="res://assets/Monsters/Zombie_Walk_Right.png" id="7_xgthg"]
+[ext_resource type="PackedScene" uid="uid://c42gydhq0xcur" path="res://scenes/zombie_claws.tscn" id="8_51y5c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gtea8"]
 radius = 16.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jtrsa"]
-atlas = ExtResource("2_3b8kx")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cuar4"]
-atlas = ExtResource("2_3b8kx")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f2qho"]
-atlas = ExtResource("2_3b8kx")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kgkix"]
-atlas = ExtResource("2_3b8kx")
-region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tecr2"]
 atlas = ExtResource("2_3b8kx")
@@ -36,22 +20,6 @@ region = Rect2(192, 0, 48, 48)
 atlas = ExtResource("2_3b8kx")
 region = Rect2(240, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ja8r"]
-atlas = ExtResource("3_f6tr4")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v7hwj"]
-atlas = ExtResource("3_f6tr4")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m1p85"]
-atlas = ExtResource("3_f6tr4")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jgmj8"]
-atlas = ExtResource("3_f6tr4")
-region = Rect2(144, 0, 48, 48)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hteg"]
 atlas = ExtResource("3_f6tr4")
 region = Rect2(192, 0, 48, 48)
@@ -59,6 +27,38 @@ region = Rect2(192, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_no5ky"]
 atlas = ExtResource("3_f6tr4")
 region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aywao"]
+atlas = ExtResource("2_3b8kx")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyg30"]
+atlas = ExtResource("2_3b8kx")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmrrs"]
+atlas = ExtResource("2_3b8kx")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o46hr"]
+atlas = ExtResource("2_3b8kx")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhf5b"]
+atlas = ExtResource("3_f6tr4")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsv7e"]
+atlas = ExtResource("3_f6tr4")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfx0t"]
+atlas = ExtResource("3_f6tr4")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ga5xk"]
+atlas = ExtResource("3_f6tr4")
+region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8wn4"]
 atlas = ExtResource("4_b4vlk")
@@ -179,18 +179,6 @@ region = Rect2(144, 0, 48, 48)
 [sub_resource type="SpriteFrames" id="SpriteFrames_u22cg"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jtrsa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cuar4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f2qho")
-}, {
-"duration": 6.9,
-"texture": SubResource("AtlasTexture_kgkix")
-}, {
 "duration": 1.2,
 "texture": SubResource("AtlasTexture_tecr2")
 }, {
@@ -202,18 +190,6 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ja8r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v7hwj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m1p85")
-}, {
-"duration": 6.9,
-"texture": SubResource("AtlasTexture_jgmj8")
-}, {
 "duration": 1.2,
 "texture": SubResource("AtlasTexture_2hteg")
 }, {
@@ -223,6 +199,40 @@ animations = [{
 "loop": false,
 "name": &"Attack_Right",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aywao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyg30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmrrs")
+}, {
+"duration": 6.9,
+"texture": SubResource("AtlasTexture_o46hr")
+}],
+"loop": false,
+"name": &"Channel_Attack_Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhf5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsv7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfx0t")
+}, {
+"duration": 6.9,
+"texture": SubResource("AtlasTexture_ga5xk")
+}],
+"loop": false,
+"name": &"Channel_Attack_Right",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -310,7 +320,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7flyn")
 }],
-"loop": false,
+"loop": true,
 "name": &"Left",
 "speed": 5.0
 }, {
@@ -327,20 +337,25 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dembm")
 }],
-"loop": false,
+"loop": true,
 "name": &"Right",
 "speed": 5.0
 }]
 
-[node name="Zombie" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "weapon")]
+[node name="Zombie" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "nav_timer", "weapon", "sprite")]
 collision_layer = 8
 collision_mask = 23
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_qbjfa")
 nav_agent = NodePath("NavigationAgent2D")
-weapon = NodePath("Hammer")
+nav_timer = NodePath("NavigationTimer")
+weapon = NodePath("ZombieClaws")
+sprite = NodePath("AnimatedSprite2D")
 attack_cooldown = 3.0
+channeling_duration = 1.0
+attack_duration = 0.25
+hit_cooldown = 1.0
 speed = 40.0
 entity_type = 1
 max_health = 10.0
@@ -351,11 +366,22 @@ scale = Vector2(0.699976, 1.18286)
 shape = SubResource("CircleShape2D_gtea8")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-
-[node name="Hammer" parent="." node_paths=PackedStringArray("weapon_owner") instance=ExtResource("3_bgsne")]
-weapon_owner = NodePath("..")
+target_desired_distance = 30.0
+path_postprocessing = 1
+avoidance_enabled = true
+debug_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 22)
 sprite_frames = SubResource("SpriteFrames_u22cg")
-animation = &"Idle"
+animation = &"Channel_Attack_Left"
 autoplay = "Idle"
+offset = Vector2(0, -22)
+
+[node name="NavigationTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="ZombieClaws" parent="." node_paths=PackedStringArray("weapon_owner") instance=ExtResource("8_51y5c")]
+weapon_owner = NodePath("..")
+damage = 5.0

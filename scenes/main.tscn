@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=4 uid="uid://fr21qkgimk2y"]
+[gd_scene load_steps=11 format=3 uid="uid://fr21qkgimk2y"]
 
-[ext_resource type="PackedScene" uid="uid://d1st6m1ngl3l" path="res://scenes/map_start.tscn" id="1_6r1yf"]
+[ext_resource type="Texture2D" uid="uid://dsryj7wvqas8x" path="res://assets/icon.svg" id="1_po7hu"]
 [ext_resource type="PackedScene" uid="uid://dv80f7odxptib" path="res://scenes/player.tscn" id="2_mdagh"]
-[ext_resource type="PackedScene" uid="uid://bm0lamjvkmjk6" path="res://scenes/fog.tscn" id="2_q8y1i"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="3_jrjlv"]
 [ext_resource type="PackedScene" uid="uid://b5kw1q1btp5t4" path="res://scenes/zombie.tscn" id="4_68k5k"]
 [ext_resource type="PackedScene" uid="uid://baiqn1rou7msb" path="res://scenes/health_bar.tscn" id="5_k670f"]
@@ -10,18 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cimr8yacev6gi" path="res://assets/health_progress.png" id="6_jvrc1"]
 [ext_resource type="Texture2D" uid="uid://dfhgjr458r06q" path="res://assets/health_over.png" id="7_ohup0"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2d1g4"]
-normal = Vector2(20, 0)
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_q8g6v"]
-scenes/4/scene = ExtResource("1_6r1yf")
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ccx8h"]
-scenes/1/scene = ExtResource("2_q8y1i")
-
-[sub_resource type="TileSet" id="TileSet_dpho3"]
-sources/0 = SubResource("TileSetScenesCollectionSource_q8g6v")
-sources/1 = SubResource("TileSetScenesCollectionSource_ccx8h")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74suc"]
+size = Vector2(130, 130)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_eb0bm"]
 vertices = PackedVector2Array(183.75, 97.9688, -132.977, 97.1484, -50.3828, 68.0313, 68.9063, 70.1797, -62.9375, 50.9219, -180.789, 92.7578, -178.141, -95, -61.9063, -70.0938, 179.227, -95, 70.0781, -68.9063)
@@ -30,41 +19,18 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(189, -105, -188, -105, 
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 31
-collision_mask = 15
-input_pickable = false
-priority = 10
+[node name="Sprite" type="StaticBody2D" parent="."]
 
-[node name="Barrier_Left" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-640, 0)
-shape = SubResource("WorldBoundaryShape2D_2d1g4")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite"]
+shape = SubResource("RectangleShape2D_74suc")
 
-[node name="Barrier_Bottom" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 640)
-rotation = -1.5708
-shape = SubResource("WorldBoundaryShape2D_2d1g4")
-
-[node name="Barrier_Top" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -640)
-rotation = 1.5708
-shape = SubResource("WorldBoundaryShape2D_2d1g4")
-
-[node name="Barrier_Right" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(640, 0)
-rotation = -3.14159
-shape = SubResource("WorldBoundaryShape2D_2d1g4")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAABADQ////AQAAAAAAAQDQ/+//AQAAAAAAAQDQ/9//AQAAAAAAAQDQ/9D/AQAAAAAAAQDg/9D/AQAAAAAAAQDw/9D/AQAAAAAAAQAAAND/AQAAAAAAAQAQAND/AQAAAAAAAQAgAND/AQAAAAAAAQAwAND/AQAAAAAAAQAvAOD/AQAAAAAAAQAvAPD/AQAAAAAAAQAvAAAAAQAAAAAAAQAvABAAAQAAAAAAAQAvACAAAQAAAAAAAQAvADAAAQAAAAAAAQAfAC8AAQAAAAAAAQAPAC8AAQAAAAAAAQD//y8AAQAAAAAAAQDv/y8AAQAAAAAAAQDf/y8AAQAAAAAAAQDP/y8AAQAAAAAAAQDQ/x8AAQAAAAAAAQDQ/w8AAQAAAAAAAQA=")
-tile_set = SubResource("TileSet_dpho3")
+[node name="Sprite2D" type="Sprite2D" parent="Sprite"]
+texture = ExtResource("1_po7hu")
 
 [node name="Player" parent="." instance=ExtResource("2_mdagh")]
-position = Vector2(5, 3)
-max_health = 10.0
+position = Vector2(139, 54)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
-position = Vector2(-134, -51)
 script = ExtResource("3_jrjlv")
 player = NodePath("../Player")
 stiffness = 10.0
@@ -96,7 +62,6 @@ size_flags_vertical = 4
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-value = 50.0
 texture_under = ExtResource("6_fxna5")
 texture_over = ExtResource("7_ohup0")
 texture_progress = ExtResource("6_jvrc1")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c42gydhq0xcur"]
+
+[ext_resource type="Script" path="res://scripts/zombie_claws.gd" id="1_o605i"]
+[ext_resource type="PackedScene" uid="uid://di2umd8hynxvy" path="res://scenes/claw_attack.tscn" id="2_luv4m"]
+
+[node name="ZombieClaws" type="Node2D"]
+script = ExtResource("1_o605i")
+claw_attack = ExtResource("2_luv4m")

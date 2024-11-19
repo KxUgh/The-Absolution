@@ -608,17 +608,20 @@ animations = [{
 "speed": 4.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "weapon") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "weapon") groups=["Players"]]
 collision_layer = 2
 collision_mask = 29
 motion_mode = 1
 script = ExtResource("1_lyb3v")
 sprite = NodePath("AnimatedSprite")
-base_speed = 200.0
-acceleration = 50.0
+speed = 200.0
 weapon = NodePath("Hammer")
 attack_cooldown = 2.0
-block_cooldown = 1.5
+attack_duration = 0.25
+block_cooldown = 1.0
+block_duration = 1.0
+hit_duration = 2.0
+max_health = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2r00u")
@@ -627,9 +630,8 @@ shape = SubResource("RectangleShape2D_2r00u")
 weapon_owner = NodePath("..")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(0, 10)
 sprite_frames = SubResource("SpriteFrames_g5bci")
-animation = &"Hit"
+animation = &"Block_Right"
 autoplay = "Idle"
-frame = 7
-frame_progress = 1.0
+offset = Vector2(0, -15)
