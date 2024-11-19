@@ -3,8 +3,8 @@ extends Enemy
 enum State{
 	IDLE,
 	MOVING,
+	CHANNELING,
 	ATTACKING,
-	HIT,
 	DEAD,
 }
 
@@ -13,14 +13,16 @@ enum State{
 @export var weapon: Weapon
 @export var sprite: AnimatedSprite2D
 @export var attack_cooldown: float
+@export var channeling_duration: float
 @export var attack_duration: float
-@export var hit_duration: float
+@export var hit_cooldown: float
 
 @onready var since_last_attack = attack_cooldown
-@onready var since_last_hit = hit_duration
+@onready var since_last_hit = hit_cooldown
 @onready var state = State.IDLE
 
 var target: Node2D
+var attack_position: Vector2
 
 func _ready() -> void:
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
@@ -43,12 +45,12 @@ func _physics_process(delta: float) -> void:
 func determine_state() -> State:
 	if state == State.DEAD:
 		return State.DEAD
-	
-	if since_last_hit < hit_duration and state == State.HIT:
-		return State.HIT
-
-	if (get_distance_to_target() < 30 and can_attack()) or (since_last_attack < attack_duration and state == State.ATTACKING):
+		
+	if state in [State.CHANNELING, State.ATTACKING] and channeling_duration < since_last_attack and since_last_attack < attack_duration + channeling_duration:
 		return State.ATTACKING
+
+	if (get_distance_to_target() < 30 and can_attack()) or (since_last_attack < channeling_duration and state == State.CHANNELING):
+		return State.CHANNELING
 
 	if velocity.length() > 0.0001:
 		return State.MOVING
@@ -60,24 +62,28 @@ func process_state(previous_state: State) -> void:
 		State.IDLE:
 			move_and_slide()
 			sprite.play("Idle")
-		State.ATTACKING:
+			
+		State.CHANNELING:
 			if previous_state != state:
 				since_last_attack = 0
-				if target.position.x - position.x < 0:
+				attack_position = target.position
+				if attack_position.x - position.x < 0:
+					Common.play_sprite_animation_duration(sprite, "Channel_Attack_Left", channeling_duration)
+				else:
+					Common.play_sprite_animation_duration(sprite, "Channel_Attack_Right", channeling_duration)
+		State.ATTACKING:
+			if previous_state != state:
+				if attack_position.x - position.x < 0:
 					Common.play_sprite_animation_duration(sprite, "Attack_Left", attack_duration)
 				else:
 					Common.play_sprite_animation_duration(sprite, "Attack_Right", attack_duration)
-				weapon.attack(position,target.position)
+				weapon.attack(position,attack_position)
 		State.MOVING:
 			move_and_slide()
 			if velocity.x > 0:
 				sprite.play("Right")
 			else:
 				sprite.play("Left")
-		State.HIT:
-			pass
-			# no hit animation yet idk if it will get added
-			# Common.play_sprite_animation_duration(sprite, "Hit", hit_duration)
 		State.DEAD:
 			if sprite.animation != "Death":
 				sprite.play("Death")
@@ -102,12 +108,15 @@ func get_distance_to_target() -> float:
 	return INF
 	
 func take_damage(damage: float, _type: Entity_type) -> void:
-	if state in [State.HIT,State.DEAD]:
+	if state in [State.DEAD] or since_last_hit < hit_cooldown:
 		return
-	state = State.HIT
 	since_last_hit = 0
+	var previous_health: float = health
 	health -= damage
-	health = clampf(health,0,max_health)
+	if previous_health > 1:
+		health = clampf(health,1,max_health)
+	else:
+		health = clampf(health,0,max_health)
 	if health == 0:
 		die()
 

@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://di2umd8hynxvy"]
+
+[ext_resource type="Script" path="res://scripts/claw_attack.gd" id="1_i6ect"]
+[ext_resource type="Texture2D" uid="uid://crvrj7gjis4vf" path="res://assets/Monsters/Zombie_Slash.png" id="2_tieui"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6l38"]
+atlas = ExtResource("2_tieui")
+region = Rect2(0, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngtj8"]
+atlas = ExtResource("2_tieui")
+region = Rect2(48, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pida1"]
+atlas = ExtResource("2_tieui")
+region = Rect2(96, 0, 48, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xsqsg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6l38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngtj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pida1")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 15.0
+}]
+
+[node name="ClawAttack" type="Area2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_i6ect")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(24, 4)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_xsqsg")
+animation = &"hit"
+autoplay = "hit"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-5, 1)
+scale = Vector2(1.48558, 1)
+polygon = PackedVector2Array(21.5405, -13, 24, -31, 32, -24, 32, 20, 24, 30, 21.5405, 14, 4.03884, 8, 4.03884, -10)
