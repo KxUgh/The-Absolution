@@ -1,9 +1,3 @@
-[gd_scene load_steps=11 format=4 uid="uid://bastwwn1vrb5"]
-
-[ext_resource type="Texture2D" path="res://assets/Textures/Purp TX Tileset Grass.png" id="1_uk51n"]
-[ext_resource type="Texture2D" path="res://assets/Textures/Black TX Props.png" id="2_2wddm"]
-[ext_resource type="Texture2D" path="res://assets/Textures/Black TX Plant.png" id="3_o42ri"]
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e33yf"]
 texture = ExtResource("1_uk51n")
 0:0/0 = 0

@@ -1,12 +1,3 @@
-[gd_scene load_steps=17 format=4 uid="uid://ddx0wisut4h0t"]
-
-[ext_resource type="Texture2D" path="res://assets/Textures/Purp TX Tileset Grass.png" id="1_att47"]
-[ext_resource type="Texture2D" path="res://assets/Textures/Black TX Tileset Wall.png" id="2_xrmsa"]
-[ext_resource type="Texture2D" path="res://assets/Textures/Black TX Struct.png" id="3_8057k"]
-[ext_resource type="Texture2D" path="res://assets/Textures/Black TX Tileset Stone Ground.png" id="4_1wbnt"]
-[ext_resource type="Texture2D" path="res://assets/Textures/Black TX Plant.png" id="5_b7r1t"]
-[ext_resource type="Texture2D" path="res://assets/Textures/Black TX Props.png" id="6_ncyys"]
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tedgu"]
 texture = ExtResource("1_att47")
 0:0/0 = 0
