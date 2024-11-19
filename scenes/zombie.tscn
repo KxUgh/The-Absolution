@@ -366,6 +366,7 @@ scale = Vector2(0.699976, 1.18286)
 shape = SubResource("CircleShape2D_gtea8")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 3.0
 target_desired_distance = 30.0
 path_postprocessing = 1
 avoidance_enabled = true
