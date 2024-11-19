@@ -4,7 +4,6 @@ enum State{
 	IDLE,
 	MOVING,
 	ATTACKING,
-	HIT,
 	DEAD,
 }
 
@@ -14,10 +13,10 @@ enum State{
 @export var sprite: AnimatedSprite2D
 @export var attack_cooldown: float
 @export var attack_duration: float
-@export var hit_duration: float
+@export var hit_cooldown: float
 
 @onready var since_last_attack = attack_cooldown
-@onready var since_last_hit = hit_duration
+@onready var since_last_hit = hit_cooldown
 @onready var state = State.IDLE
 
 var target: Node2D
@@ -43,9 +42,6 @@ func _physics_process(delta: float) -> void:
 func determine_state() -> State:
 	if state == State.DEAD:
 		return State.DEAD
-	
-	if since_last_hit < hit_duration and state == State.HIT:
-		return State.HIT
 
 	if (get_distance_to_target() < 30 and can_attack()) or (since_last_attack < attack_duration and state == State.ATTACKING):
 		return State.ATTACKING
@@ -74,10 +70,6 @@ func process_state(previous_state: State) -> void:
 				sprite.play("Right")
 			else:
 				sprite.play("Left")
-		State.HIT:
-			pass
-			# no hit animation yet idk if it will get added
-			# Common.play_sprite_animation_duration(sprite, "Hit", hit_duration)
 		State.DEAD:
 			if sprite.animation != "Death":
 				sprite.play("Death")
@@ -102,9 +94,8 @@ func get_distance_to_target() -> float:
 	return INF
 	
 func take_damage(damage: float, _type: Entity_type) -> void:
-	if state in [State.HIT,State.DEAD]:
+	if state in [State.DEAD] or since_last_hit < hit_cooldown:
 		return
-	state = State.HIT
 	since_last_hit = 0
 	health -= damage
 	health = clampf(health,0,max_health)
