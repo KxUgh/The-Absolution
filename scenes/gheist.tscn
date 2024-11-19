@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bred8rgg7f1vs" path="res://assets/Inquisition/Gheist_Idle.png" id="7_57b0d"]
 [ext_resource type="Texture2D" uid="uid://b2r4xtqyq63l6" path="res://assets/Inquisition/Gheist_Walk_Left.png" id="8_rqjfp"]
 [ext_resource type="Texture2D" uid="uid://5r5q137rln6j" path="res://assets/Inquisition/Gheist_Walk_Right.png" id="9_sp63o"]
+<<<<<<< Updated upstream
+=======
+[ext_resource type="PackedScene" path="res://scenes/gheist_blades.tscn" id="10_fh5uv"]
+>>>>>>> Stashed changes
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ng4o"]
 
@@ -338,6 +342,11 @@ shape = SubResource("CapsuleShape2D_2ng4o")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 22)
 sprite_frames = SubResource("SpriteFrames_ay5tw")
+<<<<<<< Updated upstream
 animation = &"Left"
+=======
+animation = &"Right"
+>>>>>>> Stashed changes
 autoplay = "Idle"
+frame_progress = 0.462725
 offset = Vector2(0, -22)
