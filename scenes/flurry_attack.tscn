@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://ctc3scbay3e5a"]
 
-[ext_resource type="Script" path="res://scripts/claw_attack.gd" id="1_3e1ln"]
+[ext_resource type="Script" path="res://scripts/flurry_attack.gd" id="1_n70ia"]
 [ext_resource type="Texture2D" uid="uid://d1eupenrs33dm" path="res://assets/Inquisition/Gheist_Stab.png" id="2_k7bf6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tegiy"]
@@ -54,7 +54,7 @@ animations = [{
 }]
 
 [node name="FlurryAttack" type="Area2D" node_paths=PackedStringArray("sprite")]
-script = ExtResource("1_3e1ln")
+script = ExtResource("1_n70ia")
 sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
