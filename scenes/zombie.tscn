@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://scripts/zombie.gd" id="1_qbjfa"]
 [ext_resource type="Texture2D" uid="uid://5ffpto2dmbuy" path="res://assets/Monsters/Zombie_Attack_Left.png" id="2_3b8kx"]
-[ext_resource type="PackedScene" uid="uid://dlxjd57unamns" path="res://scenes/hammer.tscn" id="3_bgsne"]
 [ext_resource type="Texture2D" uid="uid://0eurq6fwpjdk" path="res://assets/Monsters/Zombie_Attack_Right.png" id="3_f6tr4"]
 [ext_resource type="Texture2D" uid="uid://vjbgi7vuat0l" path="res://assets/Monsters/Zombie_Death.png" id="4_b4vlk"]
 [ext_resource type="Texture2D" uid="uid://cklotfnddgsm6" path="res://assets/Monsters/Zombie_Idle.png" id="5_yau7h"]
 [ext_resource type="Texture2D" uid="uid://bpsw0vr4lnthg" path="res://assets/Monsters/Zombie_Walk_Left.png" id="6_bwop6"]
 [ext_resource type="Texture2D" uid="uid://qny26n7qop8x" path="res://assets/Monsters/Zombie_Walk_Right.png" id="7_xgthg"]
+[ext_resource type="PackedScene" uid="uid://c42gydhq0xcur" path="res://scenes/zombie_claws.tscn" id="8_51y5c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gtea8"]
 radius = 16.0
@@ -340,7 +340,7 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_qbjfa")
 nav_agent = NodePath("NavigationAgent2D")
 nav_timer = NodePath("NavigationTimer")
-weapon = NodePath("Hammer")
+weapon = NodePath("ZombieClaws")
 sprite = NodePath("AnimatedSprite2D")
 attack_cooldown = 3.0
 attack_duration = 1.0
@@ -360,9 +360,6 @@ path_postprocessing = 1
 avoidance_enabled = true
 debug_enabled = true
 
-[node name="Hammer" parent="." node_paths=PackedStringArray("weapon_owner") instance=ExtResource("3_bgsne")]
-weapon_owner = NodePath("..")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 22)
 sprite_frames = SubResource("SpriteFrames_u22cg")
@@ -375,3 +372,7 @@ offset = Vector2(0, -22)
 [node name="NavigationTimer" type="Timer" parent="."]
 wait_time = 0.25
 autostart = true
+
+[node name="ZombieClaws" parent="." node_paths=PackedStringArray("weapon_owner") instance=ExtResource("8_51y5c")]
+weapon_owner = NodePath("..")
+damage = 5.0

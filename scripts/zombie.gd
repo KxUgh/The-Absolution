@@ -97,8 +97,12 @@ func take_damage(damage: float, _type: Entity_type) -> void:
 	if state in [State.DEAD] or since_last_hit < hit_cooldown:
 		return
 	since_last_hit = 0
+	var previous_health: float = health
 	health -= damage
-	health = clampf(health,0,max_health)
+	if previous_health > 1:
+		health = clampf(health,1,max_health)
+	else:
+		health = clampf(health,0,max_health)
 	if health == 0:
 		die()
 
