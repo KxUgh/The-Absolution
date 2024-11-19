@@ -2,11 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://35mm8ddi12k2" path="res://assets/theme.tres" id="1_48j51"]
 [ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_nqmro"]
-<<<<<<< Updated upstream
-[ext_resource type="Texture2D" uid="uid://ddic0ub5pusuw" path="res://assets/settings.png" id="3_lof4n"]
-=======
-[ext_resource type="Texture2D" uid="uid://b8l4mcs5kgo84" path="res://assets/settings.png" id="3_lof4n"]
->>>>>>> Stashed changes
+[ext_resource type="Texture2D" uid="uid://c7go1r4k2kpdr" path="res://assets/settings.png" id="3_lof4n"]
 [ext_resource type="PackedScene" uid="uid://bjy2g2pt7vcj3" path="res://scenes/rebind.tscn" id="3_wmjq5"]
 [ext_resource type="PackedScene" uid="uid://b6iqsayk81inb" path="res://scenes/settings_slider.tscn" id="4_jt32e"]
 

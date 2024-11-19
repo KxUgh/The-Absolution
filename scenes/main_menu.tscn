@@ -4,12 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://fr21qkgimk2y" path="res://scenes/main.tscn" id="3_d0r1b"]
 [ext_resource type="Theme" uid="uid://35mm8ddi12k2" path="res://assets/theme.tres" id="3_ixein"]
 [ext_resource type="PackedScene" uid="uid://di0ho40hp5di8" path="res://scenes/options_menu.tscn" id="3_xd4sc"]
-<<<<<<< Updated upstream
-[ext_resource type="Texture2D" uid="uid://gao6ikboxt8r" path="res://assets/main_menu.png" id="4_kx4qr"]
-=======
-[ext_resource type="Texture2D" uid="uid://du6351qo31udp" path="res://assets/main_menu.png" id="4_kx4qr"]
+[ext_resource type="Texture2D" uid="uid://bccgsoc34mohl" path="res://assets/main_menu.png" id="4_kx4qr"]
 [ext_resource type="FontFile" uid="uid://cfsor2a41whkm" path="res://assets/MinimalPixel v2.ttf" id="5_ucb3k"]
->>>>>>> Stashed changes
 
 [node name="Main_Menu" type="Control" node_paths=PackedStringArray("start_button", "options_button", "exit_button", "options_menu", "margin_containter")]
 layout_mode = 3
@@ -41,13 +37,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = 33.0
-offset_right = -2.0
-offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1, 0.88)
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12

@@ -344,7 +344,7 @@ animations = [{
 
 [node name="Zombie" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "nav_timer", "weapon", "sprite")]
 collision_layer = 8
-collision_mask = 7
+collision_mask = 23
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_qbjfa")
@@ -366,6 +366,7 @@ scale = Vector2(0.699976, 1.18286)
 shape = SubResource("CircleShape2D_gtea8")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 3.0
 target_desired_distance = 30.0
 path_postprocessing = 1
 avoidance_enabled = true

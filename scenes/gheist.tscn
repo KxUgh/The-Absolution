@@ -1,6 +1,6 @@
-[gd_scene load_steps=51 format=3 uid="uid://bqleg54jhoh23"]
+[gd_scene load_steps=52 format=3 uid="uid://bqleg54jhoh23"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_adl4l"]
+[ext_resource type="Script" path="res://scripts/gheist.gd" id="1_q4d64"]
 [ext_resource type="Texture2D" uid="uid://bg1vtg1yvsdaq" path="res://assets/Inquisition/Gheist_Appear.png" id="2_xov4e"]
 [ext_resource type="Texture2D" uid="uid://xak2t46oqg53" path="res://assets/Inquisition/Gheist_Attack_Left.png" id="3_roay0"]
 [ext_resource type="Texture2D" uid="uid://b6cqucfwqpkfk" path="res://assets/Inquisition/Gheist_Attack_Right.png" id="4_f36k2"]
@@ -9,10 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bred8rgg7f1vs" path="res://assets/Inquisition/Gheist_Idle.png" id="7_57b0d"]
 [ext_resource type="Texture2D" uid="uid://b2r4xtqyq63l6" path="res://assets/Inquisition/Gheist_Walk_Left.png" id="8_rqjfp"]
 [ext_resource type="Texture2D" uid="uid://5r5q137rln6j" path="res://assets/Inquisition/Gheist_Walk_Right.png" id="9_sp63o"]
-<<<<<<< Updated upstream
-=======
 [ext_resource type="PackedScene" path="res://scenes/gheist_blades.tscn" id="10_fh5uv"]
->>>>>>> Stashed changes
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ng4o"]
 
@@ -36,6 +33,30 @@ region = Rect2(144, 0, 48, 48)
 atlas = ExtResource("2_xov4e")
 region = Rect2(192, 0, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nx76u"]
+atlas = ExtResource("3_roay0")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjnah"]
+atlas = ExtResource("3_roay0")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_568sq"]
+atlas = ExtResource("3_roay0")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdqkm"]
+atlas = ExtResource("4_f36k2")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_desa5"]
+atlas = ExtResource("4_f36k2")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kx8fs"]
+atlas = ExtResource("4_f36k2")
+region = Rect2(240, 0, 48, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ajep"]
 atlas = ExtResource("3_roay0")
 region = Rect2(0, 0, 48, 48)
@@ -48,18 +69,6 @@ region = Rect2(48, 0, 48, 48)
 atlas = ExtResource("3_roay0")
 region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_omdvy"]
-atlas = ExtResource("3_roay0")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k1eir"]
-atlas = ExtResource("3_roay0")
-region = Rect2(192, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_igceo"]
-atlas = ExtResource("3_roay0")
-region = Rect2(240, 0, 48, 48)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_q4l7h"]
 atlas = ExtResource("4_f36k2")
 region = Rect2(0, 0, 48, 48)
@@ -71,38 +80,6 @@ region = Rect2(48, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_t3r4r"]
 atlas = ExtResource("4_f36k2")
 region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1klfg"]
-atlas = ExtResource("4_f36k2")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yse5q"]
-atlas = ExtResource("4_f36k2")
-region = Rect2(192, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oq1w5"]
-atlas = ExtResource("4_f36k2")
-region = Rect2(240, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nk3l7"]
-atlas = ExtResource("5_t085a")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0suui"]
-atlas = ExtResource("5_t085a")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_spd68"]
-atlas = ExtResource("5_t085a")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ch8r5"]
-atlas = ExtResource("5_t085a")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0dva8"]
-atlas = ExtResource("5_t085a")
-region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgjfi"]
 atlas = ExtResource("6_r6shy")
@@ -122,6 +99,26 @@ region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_notlu"]
 atlas = ExtResource("6_r6shy")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk3l7"]
+atlas = ExtResource("5_t085a")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0suui"]
+atlas = ExtResource("5_t085a")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spd68"]
+atlas = ExtResource("5_t085a")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch8r5"]
+atlas = ExtResource("5_t085a")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dva8"]
+atlas = ExtResource("5_t085a")
 region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xgihp"]
@@ -196,25 +193,44 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_nx76u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjnah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_568sq")
+}],
+"loop": true,
+"name": &"Attack_Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdqkm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_desa5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kx8fs")
+}],
+"loop": true,
+"name": &"Attack_Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_6ajep")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_m630u")
 }, {
-"duration": 1.3,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_37fbx")
-}, {
-"duration": 2.2,
-"texture": SubResource("AtlasTexture_omdvy")
-}, {
-"duration": 2.2,
-"texture": SubResource("AtlasTexture_k1eir")
-}, {
-"duration": 1.6,
-"texture": SubResource("AtlasTexture_igceo")
 }],
 "loop": false,
-"name": &"Attack_Left",
+"name": &"Channel_Attack_Left",
 "speed": 10.0
 }, {
 "frames": [{
@@ -224,41 +240,12 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2efmu")
 }, {
-"duration": 1.3,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_t3r4r")
-}, {
-"duration": 2.2,
-"texture": SubResource("AtlasTexture_1klfg")
-}, {
-"duration": 2.2,
-"texture": SubResource("AtlasTexture_yse5q")
-}, {
-"duration": 1.6,
-"texture": SubResource("AtlasTexture_oq1w5")
 }],
 "loop": false,
-"name": &"Attack_Right",
+"name": &"Channel_Attack_Right",
 "speed": 10.0
-}, {
-"frames": [{
-"duration": 1.2,
-"texture": SubResource("AtlasTexture_nk3l7")
-}, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_0suui")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_spd68")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ch8r5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0dva8")
-}],
-"loop": false,
-"name": &"Cast",
-"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.2,
@@ -278,6 +265,26 @@ animations = [{
 }],
 "loop": false,
 "name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_nk3l7")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_0suui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spd68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch8r5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dva8")
+}],
+"loop": false,
+"name": &"Disappear",
 "speed": 5.0
 }, {
 "frames": [{
@@ -332,8 +339,24 @@ animations = [{
 "speed": 7.0
 }]
 
-[node name="Gheist" type="CharacterBody2D"]
-script = ExtResource("1_adl4l")
+[node name="Gheist" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "nav_timer", "weapon", "sprite")]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_q4d64")
+nav_agent = NodePath("NavigationAgent2D")
+nav_timer = NodePath("NavigationTimer")
+weapon = NodePath("GheistBlades")
+sprite = NodePath("AnimatedSprite2D")
+teleport_distance = 75.0
+attack_cooldown = 3.0
+channeling_duration = 1.0
+attack_duration = 1.0
+hit_cooldown = 1.0
+disappear_duration = 1.0
+appear_duration = 1.0
+speed = 100.0
+entity_type = 2
+max_health = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.22835, 1.13528)
@@ -342,11 +365,20 @@ shape = SubResource("CapsuleShape2D_2ng4o")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 22)
 sprite_frames = SubResource("SpriteFrames_ay5tw")
-<<<<<<< Updated upstream
-animation = &"Left"
-=======
 animation = &"Right"
->>>>>>> Stashed changes
 autoplay = "Idle"
 frame_progress = 0.462725
 offset = Vector2(0, -22)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 3.0
+target_desired_distance = 30.0
+avoidance_enabled = true
+
+[node name="NavigationTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="GheistBlades" parent="." node_paths=PackedStringArray("weapon_owner") instance=ExtResource("10_fh5uv")]
+weapon_owner = NodePath("..")
+damage = 5.0
