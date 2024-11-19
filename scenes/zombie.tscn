@@ -332,16 +332,19 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Zombie" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "weapon", "sprite")]
+[node name="Zombie" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "nav_timer", "weapon", "sprite")]
 collision_layer = 8
 collision_mask = 7
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_qbjfa")
 nav_agent = NodePath("NavigationAgent2D")
+nav_timer = NodePath("NavigationTimer")
 weapon = NodePath("Hammer")
-attack_cooldown = 3.0
 sprite = NodePath("AnimatedSprite2D")
+attack_cooldown = 3.0
+attack_duration = 1.0
+hit_duration = 2.0
 speed = 40.0
 entity_type = 1
 max_health = 10.0
@@ -352,6 +355,10 @@ scale = Vector2(0.699976, 1.18286)
 shape = SubResource("CircleShape2D_gtea8")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 30.0
+path_postprocessing = 1
+avoidance_enabled = true
+debug_enabled = true
 
 [node name="Hammer" parent="." node_paths=PackedStringArray("weapon_owner") instance=ExtResource("3_bgsne")]
 weapon_owner = NodePath("..")
@@ -364,3 +371,7 @@ autoplay = "Idle"
 frame = 5
 frame_progress = 1.0
 offset = Vector2(0, -22)
+
+[node name="NavigationTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true

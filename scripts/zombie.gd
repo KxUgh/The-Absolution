@@ -1,36 +1,90 @@
 extends Enemy
 
+enum State{
+	IDLE,
+	MOVING,
+	ATTACKING,
+	HIT,
+	DEAD,
+}
+
 @export var nav_agent: NavigationAgent2D
+@export var nav_timer: Timer
 @export var weapon: Weapon
-@export var attack_cooldown: float
 @export var sprite: AnimatedSprite2D
+@export var attack_cooldown: float
+@export var attack_duration: float
+@export var hit_duration: float
 
 @onready var since_last_attack = attack_cooldown
+@onready var since_last_hit = hit_duration
+@onready var state = State.IDLE
 
 var target: Node2D
 
-func _process(_delta: float) -> void:
-	var players: Array[Node] = get_tree().get_nodes_in_group("player")
-	if players:
-		target = players[0]
+func _ready() -> void:
+	nav_agent.velocity_computed.connect(_on_velocity_computed)
+	nav_timer.timeout.connect(update_nav_agent)
 
 func _physics_process(delta: float) -> void:
 	since_last_attack += delta
+	since_last_hit += delta
 	
-	var direction: Vector2 = get_navigation_direction()
+	var next_path_position: Vector2 = nav_agent.get_next_path_position()
+	var direction: Vector2 = position.direction_to(next_path_position)
 	
-	if get_distance_to_target() > 30:
-		velocity = direction * speed
-	else:
-		velocity = Vector2.ZERO
-		if can_attack():
-			if target.position.x - position.x < 0:
-				sprite.play("Attack_Left")
+	nav_agent.set_velocity(direction * speed)
+	
+	var previous_state: State = state
+	state = determine_state()
+	process_state(previous_state)
+
+	
+func determine_state() -> State:
+	if state == State.DEAD:
+		return State.DEAD
+	
+	if since_last_hit < hit_duration and state == State.HIT:
+		return State.HIT
+
+	if (get_distance_to_target() < 30 and can_attack()) or (since_last_attack < attack_duration and state == State.ATTACKING):
+		return State.ATTACKING
+
+	if velocity.length() > 0.0001:
+		return State.MOVING
+	
+	return State.IDLE
+
+func process_state(previous_state: State) -> void:
+	match state:
+		State.IDLE:
+			move_and_slide()
+			sprite.play("Idle")
+		State.ATTACKING:
+			if previous_state != state:
+				since_last_attack = 0
+				if target.position.x - position.x < 0:
+					Common.play_sprite_animation_duration(sprite, "Attack_Left", attack_duration)
+				else:
+					Common.play_sprite_animation_duration(sprite, "Attack_Right", attack_duration)
+				weapon.attack(position,target.position)
+		State.MOVING:
+			move_and_slide()
+			if velocity.x > 0:
+				sprite.play("Right")
 			else:
-				sprite.play("Attack_Right")
-			weapon.attack(position,target.position)
-			since_last_attack = 0
-	move_and_slide()
+				sprite.play("Left")
+		State.HIT:
+			pass
+			# no hit animation yet idk if it will get added
+			# Common.play_sprite_animation_duration(sprite, "Hit", hit_duration)
+		State.DEAD:
+			if sprite.animation != "Death":
+				sprite.play("Death")
+			if not sprite.is_playing():
+				queue_free()
+
+
 
 func get_navigation_direction() -> Vector2:
 	if not target:
@@ -48,15 +102,29 @@ func get_distance_to_target() -> float:
 	return INF
 	
 func take_damage(damage: float, _type: Entity_type) -> void:
+	if state in [State.HIT,State.DEAD]:
+		return
+	state = State.HIT
+	since_last_hit = 0
 	health -= damage
 	health = clampf(health,0,max_health)
 	if health == 0:
 		die()
 
 func die() -> void:
-	sprite.play("Death")
-	queue_free()
+	state = State.DEAD
 	
 func can_attack() -> bool:
 	return since_last_attack > attack_cooldown
 	
+func find_target() -> void:
+	var players = get_tree().get_nodes_in_group("Players")
+	if len(players) > 0:
+		target = players[0]
+		
+func update_nav_agent() -> void:
+	find_target()
+	nav_agent.target_position = target.position
+
+func _on_velocity_computed(safe_velocity: Vector2) -> void:
+	velocity = safe_velocity
