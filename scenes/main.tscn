@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://fr21qkgimk2y"]
+[gd_scene load_steps=14 format=3 uid="uid://fr21qkgimk2y"]
 
 [ext_resource type="PackedScene" uid="uid://bhrqmd6vee22y" path="res://scenes/map_start.tscn" id="1_1818q"]
 [ext_resource type="PackedScene" uid="uid://d1evec00kp2om" path="res://scenes/map_tile_1.tscn" id="2_ikowj"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bastwwn1vrb5" path="res://scenes/map_tile_2.tscn" id="3_57a66"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="3_jrjlv"]
 [ext_resource type="PackedScene" uid="uid://ddx0wisut4h0t" path="res://scenes/map_tile_3.tscn" id="4_gi7ox"]
-[ext_resource type="PackedScene" uid="uid://bqleg54jhoh23" path="res://scenes/gheist.tscn" id="4_ylgyr"]
 [ext_resource type="PackedScene" uid="uid://b7eo2jefh6vm1" path="res://scenes/map_tile_4.tscn" id="5_djjt5"]
 [ext_resource type="PackedScene" uid="uid://baiqn1rou7msb" path="res://scenes/health_bar.tscn" id="5_k670f"]
 [ext_resource type="Texture2D" uid="uid://iyrj7y3es7mj" path="res://assets/health_under.png" id="6_fxna5"]
@@ -60,6 +59,3 @@ player = NodePath("../../../Player")
 
 [node name="Paladin" parent="." instance=ExtResource("13_r5xya")]
 position = Vector2(112, -41)
-
-[node name="Gheist" parent="." instance=ExtResource("4_ylgyr")]
-position = Vector2(12, -1)

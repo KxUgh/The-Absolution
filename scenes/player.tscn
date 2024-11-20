@@ -13,8 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://b8mstd8vd5lyj" path="res://assets/dwarf_death_monster.png" id="8_5wkba"]
 [ext_resource type="Texture2D" uid="uid://dcx8ypubepdwr" path="res://assets/dwarf_hit.png" id="9_n0k06"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2r00u"]
-size = Vector2(12, 20)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ev54u"]
+radius = 6.0
+height = 20.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v4ctf"]
 atlas = ExtResource("3_wkp1m")
@@ -612,6 +613,9 @@ animations = [{
 collision_layer = 2
 collision_mask = 29
 motion_mode = 1
+wall_min_slide_angle = 0.349066
+platform_on_leave = 2
+platform_floor_layers = 4294901761
 script = ExtResource("1_lyb3v")
 sprite = NodePath("AnimatedSprite")
 speed = 200.0
@@ -624,7 +628,7 @@ hit_duration = 2.0
 max_health = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_2r00u")
+shape = SubResource("CapsuleShape2D_ev54u")
 
 [node name="Hammer" parent="." node_paths=PackedStringArray("weapon_owner") instance=ExtResource("3_jdqdq")]
 weapon_owner = NodePath("..")
