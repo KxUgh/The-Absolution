@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://qffnwev3fc2w"]
+
+[ext_resource type="Script" path="res://scripts/paladin_sword_attack.gd" id="1_518wi"]
+[ext_resource type="Texture2D" uid="uid://cquc28qvibbaq" path="res://assets/Inquisition/Paladin_Attack_Slash.png" id="2_wtlh5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkgt5"]
+atlas = ExtResource("2_wtlh5")
+region = Rect2(0, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhqjt"]
+atlas = ExtResource("2_wtlh5")
+region = Rect2(96, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5ft7"]
+atlas = ExtResource("2_wtlh5")
+region = Rect2(192, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwxkj"]
+atlas = ExtResource("2_wtlh5")
+region = Rect2(288, 0, 96, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xsqsg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkgt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhqjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5ft7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwxkj")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grnn4"]
+size = Vector2(91, 20)
+
+[node name="PaladinSwordAttack" type="Area2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_518wi")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(48, 0)
+sprite_frames = SubResource("SpriteFrames_xsqsg")
+animation = &"hit"
+autoplay = "hit"
+frame = 3
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(45.5, 0)
+shape = SubResource("RectangleShape2D_grnn4")

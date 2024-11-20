@@ -1,0 +1,101 @@
+[gd_scene load_steps=15 format=3 uid="uid://7s8l0wpocdha"]
+
+[ext_resource type="Script" path="res://scripts/smite_attack.gd" id="1_p3elh"]
+[ext_resource type="Texture2D" uid="uid://cfpiqu73rvpjg" path="res://assets/Inquisition/Paladin_Smite_Hit.png" id="2_6q77s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndfcq"]
+atlas = ExtResource("2_6q77s")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwlv0"]
+atlas = ExtResource("2_6q77s")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujgsu"]
+atlas = ExtResource("2_6q77s")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvbwk"]
+atlas = ExtResource("2_6q77s")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tglv"]
+atlas = ExtResource("2_6q77s")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60qh0"]
+atlas = ExtResource("2_6q77s")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbhax"]
+atlas = ExtResource("2_6q77s")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbwfg"]
+atlas = ExtResource("2_6q77s")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj02g"]
+atlas = ExtResource("2_6q77s")
+region = Rect2(256, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v61le"]
+atlas = ExtResource("2_6q77s")
+region = Rect2(288, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xsqsg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndfcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwlv0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujgsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvbwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tglv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60qh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbhax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbwfg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pj02g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v61le")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grnn4"]
+size = Vector2(28.75, 29)
+
+[node name="SmiteAttack" type="Area2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_p3elh")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 10)
+sprite_frames = SubResource("SpriteFrames_xsqsg")
+animation = &"hit"
+autoplay = "hit"
+frame = 9
+frame_progress = 1.0
+offset = Vector2(0, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_grnn4")

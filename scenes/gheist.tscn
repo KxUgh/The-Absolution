@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bred8rgg7f1vs" path="res://assets/Inquisition/Gheist_Idle.png" id="7_57b0d"]
 [ext_resource type="Texture2D" uid="uid://b2r4xtqyq63l6" path="res://assets/Inquisition/Gheist_Walk_Left.png" id="8_rqjfp"]
 [ext_resource type="Texture2D" uid="uid://5r5q137rln6j" path="res://assets/Inquisition/Gheist_Walk_Right.png" id="9_sp63o"]
-[ext_resource type="PackedScene" path="res://scenes/gheist_blades.tscn" id="10_fh5uv"]
+[ext_resource type="PackedScene" uid="uid://vajbpdkijsrp" path="res://scenes/gheist_blades.tscn" id="10_fh5uv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ng4o"]
 
@@ -342,6 +342,8 @@ animations = [{
 [node name="Gheist" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "nav_timer", "weapon", "sprite")]
 collision_layer = 4
 collision_mask = 11
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_q4d64")
 nav_agent = NodePath("NavigationAgent2D")
 nav_timer = NodePath("NavigationTimer")
@@ -372,6 +374,7 @@ offset = Vector2(0, -22)
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 3.0
 target_desired_distance = 30.0
+path_postprocessing = 1
 avoidance_enabled = true
 
 [node name="NavigationTimer" type="Timer" parent="."]

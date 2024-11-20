@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://lgrw7whgsh61"]
+
+[ext_resource type="Script" path="res://scripts/paladin_sword.gd" id="1_1rk66"]
+[ext_resource type="PackedScene" uid="uid://qffnwev3fc2w" path="res://scenes/paladin_sword_attack.tscn" id="2_og4dc"]
+
+[node name="PaladinSword" type="Node2D"]
+script = ExtResource("1_1rk66")
+paladin_sword_slash = ExtResource("2_og4dc")

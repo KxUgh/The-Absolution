@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://hbb75rlnnp1v"]
+
+[ext_resource type="Script" path="res://scripts/smiter.gd" id="1_acc0h"]
+[ext_resource type="PackedScene" uid="uid://7s8l0wpocdha" path="res://scenes/smite_attack.tscn" id="2_g8t4g"]
+
+[node name="Smiter" type="Node2D"]
+script = ExtResource("1_acc0h")
+smite = ExtResource("2_g8t4g")

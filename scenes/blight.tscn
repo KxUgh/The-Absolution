@@ -223,6 +223,8 @@ animations = [{
 [node name="Blight" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "nav_timer", "weapon", "sprite")]
 collision_layer = 8
 collision_mask = 7
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_0cvhx")
 nav_agent = NodePath("NavigationAgent2D")
 nav_timer = NodePath("NavTimer")

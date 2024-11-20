@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://fr21qkgimk2y"]
+[gd_scene load_steps=14 format=3 uid="uid://fr21qkgimk2y"]
 
 [ext_resource type="PackedScene" uid="uid://bhrqmd6vee22y" path="res://scenes/map_start.tscn" id="1_1818q"]
 [ext_resource type="PackedScene" uid="uid://d1evec00kp2om" path="res://scenes/map_tile_1.tscn" id="2_ikowj"]
@@ -6,18 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://bastwwn1vrb5" path="res://scenes/map_tile_2.tscn" id="3_57a66"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="3_jrjlv"]
 [ext_resource type="PackedScene" uid="uid://ddx0wisut4h0t" path="res://scenes/map_tile_3.tscn" id="4_gi7ox"]
-[ext_resource type="PackedScene" uid="uid://bqleg54jhoh23" path="res://scenes/gheist.tscn" id="4_ylgyr"]
 [ext_resource type="PackedScene" uid="uid://b7eo2jefh6vm1" path="res://scenes/map_tile_4.tscn" id="5_djjt5"]
 [ext_resource type="PackedScene" uid="uid://baiqn1rou7msb" path="res://scenes/health_bar.tscn" id="5_k670f"]
 [ext_resource type="Texture2D" uid="uid://iyrj7y3es7mj" path="res://assets/health_under.png" id="6_fxna5"]
 [ext_resource type="Texture2D" uid="uid://cimr8yacev6gi" path="res://assets/health_progress.png" id="6_jvrc1"]
 [ext_resource type="Texture2D" uid="uid://dfhgjr458r06q" path="res://assets/health_over.png" id="7_ohup0"]
 [ext_resource type="PackedScene" uid="uid://d381ak6swverr" path="res://scenes/map_generator.tscn" id="8_wxavk"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_eb0bm"]
-vertices = PackedVector2Array(183.75, 97.9688, -132.977, 97.1484, -50.3828, 68.0313, 68.9063, 70.1797, -62.9375, 50.9219, -180.789, 92.7578, -178.141, -95, -61.9063, -70.0938, 179.227, -95, 70.0781, -68.9063)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(7, 6, 8, 9), PackedInt32Array(8, 0, 3, 9)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(189, -105, -188, -105, -191, 107, -53, 58, -52, -60, 60, -59, 59, 60, -52, 58, -191, 107, 194, 108, 191.549, 3.60291)])
+[ext_resource type="PackedScene" uid="uid://b4fgo2tacmo5k" path="res://scenes/paladin.tscn" id="13_r5xya"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -38,12 +33,6 @@ player = NodePath("../Player")
 stiffness = 10.0
 horizontal_pan_distance = 15.0
 vertical_pan_distance = 15.0
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-position = Vector2(-5, 1)
-navigation_polygon = SubResource("NavigationPolygon_eb0bm")
-
-[node name="Gheist" parent="." instance=ExtResource("4_ylgyr")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -67,3 +56,6 @@ texture_under = ExtResource("6_fxna5")
 texture_over = ExtResource("7_ohup0")
 texture_progress = ExtResource("6_jvrc1")
 player = NodePath("../../../Player")
+
+[node name="Paladin" parent="." instance=ExtResource("13_r5xya")]
+position = Vector2(112, -41)
