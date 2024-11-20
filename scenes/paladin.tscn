@@ -304,13 +304,13 @@ nav_timer = NodePath("NavTimer")
 sword = NodePath("PaladinSword")
 smiter = NodePath("Smiter")
 sprite = NodePath("AnimatedSprite2D")
-attack_cooldown = 2.0
-channeling_duration = 0.5
-attack_duration = 0.5
+attack_cooldown = 4.0
+channeling_duration = 1.5
+attack_duration = 1.0
 hit_cooldown = 1.0
 speed = 50.0
 entity_type = 2
-max_health = 10.0
+max_health = 60.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.44, 2.72)
@@ -333,7 +333,7 @@ avoidance_enabled = true
 
 [node name="PaladinSword" parent="." node_paths=PackedStringArray("weapon_owner") instance=ExtResource("8_l4fr0")]
 weapon_owner = NodePath("..")
-damage = 4.0
+damage = 8.0
 
 [node name="Smiter" parent="." node_paths=PackedStringArray("weapon_owner") instance=ExtResource("9_x5xo0")]
 weapon_owner = NodePath("..")
