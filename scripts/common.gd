@@ -18,3 +18,11 @@ func play_sprite_animation_duration(sprite: AnimatedSprite2D, animation: String,
 		var animation_duration: float = get_animation_duration_of_sprite(sprite, animation)
 		time_scale = animation_duration / duration
 	sprite.play(animation, time_scale)
+
+func load_player_data() -> PlayerData:
+	if ResourceLoader.exists("user://player_data.tres"):
+		return load("user://player_data.tres")
+	return PlayerData.new()
+
+func save_player_data(player_data: PlayerData) -> void:
+	ResourceSaver.save(player_data,"user://player_data.tres")

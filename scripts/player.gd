@@ -14,7 +14,6 @@ enum State{
 signal health_changed()
 
 @export var sprite: AnimatedSprite2D
-@export var speed: float
 @export var weapon: Weapon
 @export var attack_cooldown: float
 @export var attack_duration: float
@@ -22,10 +21,15 @@ signal health_changed()
 @export var block_duration: float
 @export var hit_duration: float
 
+@onready var player_data: PlayerData = Common.load_player_data()
 @onready var since_last_attack: float = attack_cooldown
 @onready var since_last_block: float = block_cooldown
 @onready var since_last_hit: float = hit_duration
 @onready var state: State = State.IDLE
+
+func _ready() -> void:
+	player_data.health = player_data.max_health
+	weapon.damage = player_data.damage
 
 func _physics_process(delta: float) -> void:
 	since_last_attack += delta
@@ -37,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	var x_direction: float = Input.get_axis("left", "right")
 	var y_direction: float = Input.get_axis("up", "down")
 	var direction: Vector2 = Vector2(x_direction,y_direction).normalized()
-	velocity = speed * direction
+	velocity = player_data.speed * direction
 	
 	var previous_state: State = state
 	state = determine_state()
@@ -111,17 +115,20 @@ func can_block() -> bool:
 	return since_last_block > block_cooldown
 
 func take_damage(damage: float, type: Entity_type) -> void:
-	if state in [State.BLOCKING,State.HIT,State.DEAD_INQUISITION,State.DEAD_MONSTER]:
+	if state in [State.HIT,State.DEAD_INQUISITION,State.DEAD_MONSTER]:
+		return
+	if state == State.BLOCKING and damage < 1000:
 		return
 	state = State.HIT
 	since_last_hit = 0
-	health -= damage
-	health = clampf(health,0,max_health)
+	player_data.health -= damage
+	player_data.health = clampf(player_data.health,0,player_data.max_health)
 	health_changed.emit()
-	if health == 0:
+	if player_data.health == 0:
 		die(type)
 
 func die(type: Entity_type) -> void:
+	Common.save_player_data(player_data)
 	match type:
 		Entity.Entity_type.MONSTER:
 			state = State.DEAD_MONSTER
