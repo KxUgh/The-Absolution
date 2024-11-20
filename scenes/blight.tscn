@@ -230,12 +230,12 @@ nav_agent = NodePath("NavigationAgent2D")
 nav_timer = NodePath("NavTimer")
 weapon = NodePath("BlightWeapon")
 sprite = NodePath("AnimatedSprite2D")
-attack_cooldown = 5.0
-attack_duration = 3.0
+attack_cooldown = 7.0
+attack_duration = 2.5
 hit_cooldown = 1.0
 speed = 30.0
 entity_type = 1
-max_health = 10.0
+max_health = 15.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.755745, 2.1398)
@@ -244,10 +244,8 @@ shape = SubResource("CircleShape2D_eaff3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 24)
 sprite_frames = SubResource("SpriteFrames_dhhf8")
-animation = &"Attack"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 5
-frame_progress = 1.0
 offset = Vector2(0, -24)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
@@ -262,4 +260,4 @@ autostart = true
 [node name="BlightWeapon" parent="." node_paths=PackedStringArray("weapon_owner") instance=ExtResource("7_uy2vh")]
 position = Vector2(0, 19)
 weapon_owner = NodePath("..")
-damage = 2.0
+damage = 6.0
