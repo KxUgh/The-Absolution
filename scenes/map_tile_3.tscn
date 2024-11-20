@@ -1116,7 +1116,7 @@ texture = ExtResource("6_ncyys")
 
 [sub_resource type="TileSet" id="TileSet_cdorl"]
 physics_layer_0/collision_layer = 16
-physics_layer_0/collision_mask = 15
+physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_oohon")
 sources/2 = SubResource("TileSetAtlasSource_ydini")
 sources/3 = SubResource("TileSetAtlasSource_7dgv6")
