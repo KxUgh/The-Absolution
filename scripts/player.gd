@@ -128,7 +128,6 @@ func take_damage(damage: float, type: Entity_type) -> void:
 		die(type)
 
 func die(type: Entity_type) -> void:
-	player_data.max_health = 100000
 	Common.save_player_data(player_data)
 	match type:
 		Entity.Entity_type.MONSTER:
