@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://fr21qkgimk2y"]
+[gd_scene load_steps=13 format=3 uid="uid://fr21qkgimk2y"]
 
 [ext_resource type="PackedScene" uid="uid://bhrqmd6vee22y" path="res://scenes/map_start.tscn" id="1_1818q"]
 [ext_resource type="PackedScene" uid="uid://d1evec00kp2om" path="res://scenes/map_tile_1.tscn" id="2_ikowj"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://cimr8yacev6gi" path="res://assets/health_progress.png" id="6_jvrc1"]
 [ext_resource type="Texture2D" uid="uid://dfhgjr458r06q" path="res://assets/health_over.png" id="7_ohup0"]
 [ext_resource type="PackedScene" uid="uid://d381ak6swverr" path="res://scenes/map_generator.tscn" id="8_wxavk"]
-[ext_resource type="PackedScene" uid="uid://b4fgo2tacmo5k" path="res://scenes/paladin.tscn" id="13_r5xya"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -25,7 +24,7 @@ blocks = Array[PackedScene]([ExtResource("2_ikowj"), ExtResource("3_57a66"), Ext
 start_block = ExtResource("1_1818q")
 
 [node name="Player" parent="." instance=ExtResource("2_mdagh")]
-position = Vector2(139, 54)
+position = Vector2(1, 2)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("3_jrjlv")
@@ -56,6 +55,3 @@ texture_under = ExtResource("6_fxna5")
 texture_over = ExtResource("7_ohup0")
 texture_progress = ExtResource("6_jvrc1")
 player = NodePath("../../../Player")
-
-[node name="Paladin" parent="." instance=ExtResource("13_r5xya")]
-position = Vector2(112, -41)
