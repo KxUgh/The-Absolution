@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://djb315gm7ehvw"]
+
+[ext_resource type="Script" path="res://scripts/blight_attack.gd" id="1_0s36d"]
+[ext_resource type="Texture2D" uid="uid://cma0xlnmf2x46" path="res://assets/Monsters/Blight_Root_Outer.png" id="2_ie12l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nw7uo"]
+atlas = ExtResource("2_ie12l")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bomm5"]
+atlas = ExtResource("2_ie12l")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhcs5"]
+atlas = ExtResource("2_ie12l")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xsqsg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nw7uo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bomm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhcs5")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 1.0
+}]
+
+[node name="BlightInnerAttack" type="Area2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_0s36d")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xsqsg")
+animation = &"hit"
+autoplay = "hit"
+frame_progress = 1.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-28, 7, -30, -7, -27, -16, -21, -23, -12, -31, 5, -34, 18, -30, 28, -21, 31, -11, 32, 0, 29, 14, 21, 23, 9, 29, -4, 31, -20, 24, -28, 10, -63, 12, -60, 24, -53, 34, -42, 47, -26, 58, -8, 62, 12, 62, 26, 57, 40, 48, 53, 36, 60, 22, 62, 9, 62, -8, 58, -24, 49, -39, 39, -50, 22, -59, 6, -63, -17, -61, -34, -53, -52, -36, -59, -22, -63, -9, -63, 9)

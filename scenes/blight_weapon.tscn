@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce053lf3ffoit"]
+
+[ext_resource type="Script" path="res://scripts/blight_weapon.gd" id="1_h8i6b"]
+[ext_resource type="PackedScene" uid="uid://c065kcxx6gia2" path="res://scenes/blight_inner_attack.tscn" id="2_05pwr"]
+[ext_resource type="PackedScene" uid="uid://djb315gm7ehvw" path="res://scenes/blight_outer_attack.tscn" id="3_j4i0l"]
+
+[node name="BlightWeapon" type="Node2D"]
+script = ExtResource("1_h8i6b")
+inner_attack = ExtResource("2_05pwr")
+outer_attack = ExtResource("3_j4i0l")
