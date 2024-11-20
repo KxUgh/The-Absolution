@@ -7,10 +7,7 @@ extends Node2D
 @export var blocks: Array[PackedScene]
 @export var start_block: PackedScene
 
-@onready var rng = RandomNumberGenerator.new()
-
 func _ready() -> void:
-	seed(rng.randi())
 	for i in range(-height/2,height/2 + 1):
 		for j in range(-width/2,width/2 + 1):
 			var block_instance: Node2D
