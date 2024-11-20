@@ -618,7 +618,6 @@ platform_on_leave = 2
 platform_floor_layers = 4294901761
 script = ExtResource("1_lyb3v")
 sprite = NodePath("AnimatedSprite")
-speed = 200.0
 weapon = NodePath("Hammer")
 attack_cooldown = 1.0
 attack_duration = 0.25
