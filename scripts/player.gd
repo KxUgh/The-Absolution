@@ -15,26 +15,31 @@ signal health_changed()
 
 @export var sprite: AnimatedSprite2D
 @export var weapon: Weapon
+@export var blight_weapon: Weapon
 @export var attack_cooldown: float
 @export var attack_duration: float
 @export var block_cooldown: float
 @export var block_duration: float
 @export var hit_duration: float
+@export var blight_attack_cooldown: float
 
 @onready var player_data: PlayerData = Common.load_player_data()
 @onready var since_last_attack: float = attack_cooldown
 @onready var since_last_block: float = block_cooldown
 @onready var since_last_hit: float = hit_duration
+@onready var since_last_blight_attack: float = blight_attack_cooldown
 @onready var state: State = State.IDLE
 
 func _ready() -> void:
 	player_data.health = player_data.max_health
 	weapon.damage = player_data.damage
+	blight_weapon.damage = player_data.damage / 2
 
 func _physics_process(delta: float) -> void:
 	since_last_attack += delta
 	since_last_block += delta
 	since_last_hit += delta
+	since_last_blight_attack += delta
 
 	# Get movement input from player
 	# -1 <= x_direction, ydirection <= 1
@@ -83,6 +88,9 @@ func process_state(previous_state: State) -> void:
 				else:
 					Common.play_sprite_animation_duration(sprite, "Attack_Right", attack_duration)
 				weapon.attack(position,mouse_position)
+				if player_data.buff == PlayerData.BuffType.BLIGHT and since_last_blight_attack > blight_attack_cooldown:
+					since_last_blight_attack = 0
+					blight_weapon.attack(position,mouse_position)
 		State.BLOCKING:
 			if previous_state != state:
 				since_last_block = 0
@@ -114,7 +122,7 @@ func can_attack() -> bool:
 func can_block() -> bool:
 	return since_last_block > block_cooldown
 
-func take_damage(damage: float, type: Entity_type) -> void:
+func take_damage(damage: float, type: Entity_type, buff: PlayerData.BuffType = PlayerData.BuffType.NONE) -> void:
 	if state in [State.HIT,State.DEAD_INQUISITION,State.DEAD_MONSTER]:
 		return
 	if state == State.BLOCKING and damage < 1000:
@@ -122,15 +130,26 @@ func take_damage(damage: float, type: Entity_type) -> void:
 	state = State.HIT
 	since_last_hit = 0
 	player_data.health -= damage
-	player_data.health = clampf(player_data.health,0,player_data.max_health)
+	if player_data.buff == PlayerData.BuffType.ZOMBIE and player_data.health > 1:
+		player_data.health = clampf(player_data.health,1,player_data.max_health)
+	else:
+		player_data.health = clampf(player_data.health,0,player_data.max_health)
 	health_changed.emit()
 	if player_data.health == 0:
-		die(type)
+		die(type, buff)
 
-func die(type: Entity_type) -> void:
+func die(type: Entity_type, buff: PlayerData.BuffType) -> void:
+	player_data.buff = buff
 	Common.save_player_data(player_data)
 	match type:
 		Entity.Entity_type.MONSTER:
 			state = State.DEAD_MONSTER
 		Entity_type.INQUISITION:
 			state = State.DEAD_INQUISITION
+
+func apply_potion_effect(type: Potion.PotionType,value: float) -> void:
+	match type:
+		Potion.PotionType.HEALTH:
+			player_data.max_health += value
+		Potion.PotionType.DAMAGE:
+			player_data.damage += value

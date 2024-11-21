@@ -1,9 +1,12 @@
-[gd_scene load_steps=52 format=3 uid="uid://b5kw1q1btp5t4"]
+[gd_scene load_steps=55 format=3 uid="uid://b5kw1q1btp5t4"]
 
 [ext_resource type="Script" path="res://scripts/zombie.gd" id="1_qbjfa"]
 [ext_resource type="Texture2D" uid="uid://5ffpto2dmbuy" path="res://assets/Monsters/Zombie_Attack_Left.png" id="2_3b8kx"]
+[ext_resource type="PackedScene" uid="uid://df5p856536ofx" path="res://scenes/damage_potion.tscn" id="2_c7ljv"]
 [ext_resource type="Texture2D" uid="uid://0eurq6fwpjdk" path="res://assets/Monsters/Zombie_Attack_Right.png" id="3_f6tr4"]
+[ext_resource type="PackedScene" uid="uid://ifrsl6yeqjgo" path="res://scenes/health_potion.tscn" id="3_whuyg"]
 [ext_resource type="Texture2D" uid="uid://vjbgi7vuat0l" path="res://assets/Monsters/Zombie_Death.png" id="4_b4vlk"]
+[ext_resource type="PackedScene" uid="uid://i2387ppnrwxf" path="res://scenes/speed_potion.tscn" id="4_losfv"]
 [ext_resource type="Texture2D" uid="uid://cklotfnddgsm6" path="res://assets/Monsters/Zombie_Idle.png" id="5_yau7h"]
 [ext_resource type="Texture2D" uid="uid://bpsw0vr4lnthg" path="res://assets/Monsters/Zombie_Walk_Left.png" id="6_bwop6"]
 [ext_resource type="Texture2D" uid="uid://qny26n7qop8x" path="res://assets/Monsters/Zombie_Walk_Right.png" id="7_xgthg"]
@@ -348,6 +351,7 @@ collision_mask = 7
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_qbjfa")
+potions = Array[PackedScene]([ExtResource("2_c7ljv"), ExtResource("3_whuyg"), ExtResource("4_losfv")])
 nav_agent = NodePath("NavigationAgent2D")
 nav_timer = NodePath("NavigationTimer")
 weapon = NodePath("ZombieClaws")
@@ -370,7 +374,6 @@ path_desired_distance = 3.0
 target_desired_distance = 30.0
 path_postprocessing = 1
 avoidance_enabled = true
-debug_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 22)

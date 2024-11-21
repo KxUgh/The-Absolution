@@ -1,8 +1,11 @@
-[gd_scene load_steps=36 format=3 uid="uid://cxe72q12qtfg2"]
+[gd_scene load_steps=39 format=3 uid="uid://cxe72q12qtfg2"]
 
 [ext_resource type="Script" path="res://scripts/blight.gd" id="1_0cvhx"]
+[ext_resource type="PackedScene" uid="uid://ifrsl6yeqjgo" path="res://scenes/health_potion.tscn" id="2_c3l2d"]
 [ext_resource type="Texture2D" uid="uid://7mqycupp3nw1" path="res://assets/Monsters/Blight_Attack.png" id="2_tv6fx"]
+[ext_resource type="PackedScene" uid="uid://df5p856536ofx" path="res://scenes/damage_potion.tscn" id="3_1dkvd"]
 [ext_resource type="Texture2D" uid="uid://dmb1n6krk43gr" path="res://assets/Monsters/Blight_Death.png" id="3_m187m"]
+[ext_resource type="PackedScene" uid="uid://i2387ppnrwxf" path="res://scenes/speed_potion.tscn" id="4_nhxu8"]
 [ext_resource type="Texture2D" uid="uid://ck4o4ep7uu7bv" path="res://assets/Monsters/Blight_Idle.png" id="4_yrcwt"]
 [ext_resource type="Texture2D" uid="uid://bjeuwo0grewgf" path="res://assets/Monsters/Blight_Walk_Left.png" id="5_tm2ki"]
 [ext_resource type="Texture2D" uid="uid://dn835u3yjc7uo" path="res://assets/Monsters/Blight_Walk_Right.png" id="6_q0lmf"]
@@ -226,6 +229,7 @@ collision_mask = 7
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_0cvhx")
+potions = Array[PackedScene]([ExtResource("2_c3l2d"), ExtResource("3_1dkvd"), ExtResource("4_nhxu8")])
 nav_agent = NodePath("NavigationAgent2D")
 nav_timer = NodePath("NavTimer")
 weapon = NodePath("BlightWeapon")
@@ -260,4 +264,7 @@ autostart = true
 [node name="BlightWeapon" parent="." node_paths=PackedStringArray("weapon_owner") instance=ExtResource("7_uy2vh")]
 position = Vector2(0, 19)
 weapon_owner = NodePath("..")
+
 damage = 6.0
+buff = 2
+

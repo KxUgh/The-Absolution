@@ -4,6 +4,7 @@ extends Node2D
 
 @export var weapon_owner: CollisionObject2D
 @export var damage: float
+@export var buff: PlayerData.BuffType
 
 @onready var entity_type: Entity.Entity_type = weapon_owner.entity_type
 
@@ -16,4 +17,5 @@ func init_attack(attack_scene: PackedScene) -> Attack:
 	attack_instance.collision_mask = weapon_owner.collision_mask
 	attack_instance.damage = damage
 	attack_instance.entity_type = entity_type
+	attack_instance.buff = buff
 	return attack_instance

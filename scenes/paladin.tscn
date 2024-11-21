@@ -1,9 +1,12 @@
-[gd_scene load_steps=46 format=3 uid="uid://b4fgo2tacmo5k"]
+[gd_scene load_steps=49 format=3 uid="uid://b4fgo2tacmo5k"]
 
 [ext_resource type="Script" path="res://scripts/paladin.gd" id="1_10svr"]
+[ext_resource type="PackedScene" uid="uid://df5p856536ofx" path="res://scenes/damage_potion.tscn" id="2_bow2e"]
 [ext_resource type="Texture2D" uid="uid://mjw77n0jrnlj" path="res://assets/Inquisition/Paladin_Idle.png" id="2_iywb3"]
 [ext_resource type="Texture2D" uid="uid://c4v6sv6lmqhd2" path="res://assets/Inquisition/Paladin_Attack.png" id="2_wfsfx"]
+[ext_resource type="PackedScene" uid="uid://ifrsl6yeqjgo" path="res://scenes/health_potion.tscn" id="3_m4gwe"]
 [ext_resource type="Texture2D" uid="uid://c0qhe7i3ualt1" path="res://assets/Inquisition/Paladin_Death.png" id="3_rv7hk"]
+[ext_resource type="PackedScene" uid="uid://i2387ppnrwxf" path="res://scenes/speed_potion.tscn" id="4_r7ews"]
 [ext_resource type="Texture2D" uid="uid://whvf8dwhw3qj" path="res://assets/Inquisition/Paladin_Walk_Left.png" id="5_4h8k1"]
 [ext_resource type="Texture2D" uid="uid://jxobuindiea5" path="res://assets/Inquisition/Paladin_Smite_Channel.png" id="6_8bhr0"]
 [ext_resource type="Texture2D" uid="uid://p5jmx4rkb02r" path="res://assets/Inquisition/Paladin_Walk_Right.png" id="7_e8h6f"]
@@ -299,14 +302,17 @@ collision_mask = 11
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_10svr")
+potions = Array[PackedScene]([ExtResource("2_bow2e"), ExtResource("3_m4gwe"), ExtResource("4_r7ews")])
 nav_agent = NodePath("NavigationAgent2D")
 nav_timer = NodePath("NavTimer")
 sword = NodePath("PaladinSword")
 smiter = NodePath("Smiter")
 sprite = NodePath("AnimatedSprite2D")
+
 attack_cooldown = 4.0
+smite_cooldown = 20.0
 channeling_duration = 1.5
-attack_duration = 1.0
+attack_duration = 1
 hit_cooldown = 1.0
 speed = 50.0
 entity_type = 2
