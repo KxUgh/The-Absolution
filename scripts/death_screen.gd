@@ -8,6 +8,7 @@ extends Control
 @onready var menu: PackedScene = load("res://scenes/main_menu.tscn")
 
 func _ready() -> void:
+	Music.set_music(Music.MusicType.GAME)
 	restart_button.pressed.connect(restart_game)
 	exit_button.pressed.connect(exit)
 	menu_button.pressed.connect(go_to_menu)

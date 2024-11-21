@@ -9,6 +9,7 @@ extends Control
 @export var button_container: Container
 
 func _ready():
+	Music.set_music(Music.MusicType.MENU)
 	start_button.button_up.connect(on_start_pressed)
 	options_button.button_up.connect(on_options_pressed)
 	exit_button.button_up.connect(on_exit_pressed)

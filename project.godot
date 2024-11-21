@@ -18,6 +18,7 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 Common="*res://scripts/common.gd"
+Music="*res://scenes/music.tscn"
 
 [display]
 
