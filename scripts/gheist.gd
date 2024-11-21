@@ -39,11 +39,11 @@ func _physics_process(delta: float) -> void:
 	since_last_hit += delta
 	since_last_disappear += delta
 	
-	if get_distance_to_target() > 200:
+	if get_distance_to_target() > 150:
 		return
 	
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()
-	var direction: Vector2 = position.direction_to(next_path_position)
+	var direction: Vector2 = global_position.direction_to(next_path_position)
 	
 	nav_agent.set_velocity(direction * speed)
 	
@@ -59,7 +59,7 @@ func determine_state() -> State:
 	if state in [State.DISAPPEARING, State.APPEARING] and disappear_duration < since_last_disappear and since_last_disappear < disappear_duration + appear_duration:
 		return State.APPEARING
 	
-	if state in [State.ATTACKING, State.DISAPPEARING] and since_last_disappear < disappear_duration:
+	if since_last_disappear < disappear_duration and since_last_disappear > 0:
 		return State.DISAPPEARING
 		
 	if state in [State.CHANNELING, State.ATTACKING] and channeling_duration < since_last_attack and since_last_attack < attack_duration + channeling_duration:
@@ -74,6 +74,8 @@ func determine_state() -> State:
 	return State.IDLE
 
 func process_state(previous_state: State) -> void:
+	print(state == State.DISAPPEARING)
+	print(since_last_disappear)
 	match state:
 		State.IDLE:
 			move_and_slide()
@@ -82,20 +84,20 @@ func process_state(previous_state: State) -> void:
 		State.CHANNELING:
 			if previous_state != state:
 				since_last_attack = 0
-				attack_position = target.position
+				attack_position = target.global_position
 				if attack_position.x - position.x < 0:
 					Common.play_sprite_animation_duration(sprite, "Channel_Attack_Left", channeling_duration)
 				else:
 					Common.play_sprite_animation_duration(sprite, "Channel_Attack_Right", channeling_duration)
 		State.ATTACKING:
 			if previous_state != state:
-				if attack_position.x - position.x < 0:
+				if attack_position.x - global_position.x < 0:
 					Common.play_sprite_animation_duration(sprite, "Attack_Left", attack_duration)
 				else:
 					Common.play_sprite_animation_duration(sprite, "Attack_Right", attack_duration)
-				weapon.attack(position,attack_position)
-			if sprite.frame_progress > 0.9 and sprite.frame == 2:
-				since_last_disappear = 0
+				weapon.attack(global_position,attack_position)
+				since_last_disappear = -attack_duration
+			print(sprite.frame_progress)
 		State.MOVING:
 			move_and_slide()
 			if velocity.x > 0:
@@ -115,13 +117,13 @@ func process_state(previous_state: State) -> void:
 			if previous_state != state:
 				Common.play_sprite_animation_duration(sprite, "Appear", appear_duration)
 				var distance: float
-				position += attack_position.direction_to(position) * teleport_distance
+				position += attack_position.direction_to(global_position) * teleport_distance
 
 
 func get_navigation_direction() -> Vector2:
 	if not target:
 		return Vector2.ZERO
-	nav_agent.target_position = target.position
+	nav_agent.target_position = target.global_position
 	if nav_agent.is_navigation_finished():
 		return Vector2.ZERO
 	var next_position: Vector2 = nav_agent.get_next_path_position()
@@ -130,7 +132,7 @@ func get_navigation_direction() -> Vector2:
 
 func get_distance_to_target() -> float:
 	if target:
-		return (target.position - position).length()
+		return (target.global_position - global_position).length()
 	return INF
 	
 func take_damage(damage: float, _type: Entity_type, _buff: PlayerData.BuffType = PlayerData.BuffType.NONE) -> void:

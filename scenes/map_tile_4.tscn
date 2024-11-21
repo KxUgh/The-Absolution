@@ -1,9 +1,12 @@
-[gd_scene load_steps=14 format=4 uid="uid://b7eo2jefh6vm1"]
+[gd_scene load_steps=17 format=4 uid="uid://b7eo2jefh6vm1"]
 
 [ext_resource type="Texture2D" uid="uid://svyog8juti0y" path="res://assets/Textures/Purp TX Tileset Grass.png" id="1_6cnh5"]
 [ext_resource type="Script" path="res://scripts/navigation_layer.gd" id="2_lv12n"]
 [ext_resource type="Texture2D" uid="uid://b544qnikqelmr" path="res://assets/Textures/Black TX Props.png" id="2_stfqg"]
-[ext_resource type="Texture2D" uid="uid://cgww300ig2xyx" path="res://assets/Textures/Black TX Plant.png" id="3_ntfum"]
+[ext_resource type="Texture2D" uid="uid://cgww300ig2xyx" path="res://assets/Black TX Plant.png" id="3_ntfum"]
+[ext_resource type="PackedScene" uid="uid://cxe72q12qtfg2" path="res://scenes/blight.tscn" id="5_u5o7f"]
+[ext_resource type="PackedScene" uid="uid://bqleg54jhoh23" path="res://scenes/gheist.tscn" id="6_0id72"]
+[ext_resource type="PackedScene" uid="uid://b5kw1q1btp5t4" path="res://scenes/zombie.tscn" id="7_updl5"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5sc3a"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -906,3 +909,18 @@ tile_set = SubResource("TileSet_nmp27")
 z_index = 10
 tile_map_data = PackedByteArray("AAD5//3/AAAIAAMAAAD5//7/AAAIAAQAAAD///n/AAAIAAMAAAD///r/AAAIAAQAAAAFAP3/AAAIAAMAAAAFAP7/AAAIAAQAAAD//wIAAAAIAAMAAAD//wMAAAAIAAQAAAA=")
 tile_set = SubResource("TileSet_nmp27")
+
+[node name="Blight" parent="." instance=ExtResource("5_u5o7f")]
+position = Vector2(51, 15)
+
+[node name="Blight2" parent="." instance=ExtResource("5_u5o7f")]
+position = Vector2(-66, -56)
+
+[node name="Gheist" parent="." instance=ExtResource("6_0id72")]
+position = Vector2(-51, 41)
+
+[node name="Zombie" parent="." instance=ExtResource("7_updl5")]
+position = Vector2(35, -54)
+
+[node name="Zombie2" parent="." instance=ExtResource("7_updl5")]
+position = Vector2(30, 83)

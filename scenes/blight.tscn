@@ -224,6 +224,7 @@ animations = [{
 }]
 
 [node name="Blight" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "nav_timer", "weapon", "sprite")]
+z_index = 1
 collision_layer = 8
 collision_mask = 7
 motion_mode = 1

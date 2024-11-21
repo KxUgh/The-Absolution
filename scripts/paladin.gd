@@ -39,11 +39,11 @@ func _physics_process(delta: float) -> void:
 	since_last_hit += delta
 	since_last_smite += delta
 	
-	if get_distance_to_target() > 200:
+	if get_distance_to_target() > 150:
 		return
 	
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()
-	var direction: Vector2 = position.direction_to(next_path_position)
+	var direction: Vector2 = global_position.direction_to(next_path_position)
 	
 	nav_agent.set_velocity(direction * speed)
 	
@@ -83,12 +83,12 @@ func process_state(previous_state: State) -> void:
 		State.CHANNELING:
 			if previous_state != state:
 				since_last_attack = 0
-				attack_position = target.position
+				attack_position = target.global_position
 				Common.play_sprite_animation_duration(sprite, "Channel_Attack", channeling_duration)
 		State.ATTACKING:
 			if previous_state != state:
 				Common.play_sprite_animation_duration(sprite, "Attack", attack_duration)
-				sword.attack(position,attack_position)
+				sword.attack(global_position,attack_position)
 		State.CHANNELING_SMITE:
 			if previous_state != state:
 				since_last_smite = 0
@@ -124,7 +124,7 @@ func get_navigation_direction() -> Vector2:
 
 func get_distance_to_target() -> float:
 	if target:
-		return (target.position - position).length()
+		return (target.global_position - global_position).length()
 	return INF
 	
 func take_damage(damage: float, _type: Entity_type, _buff: PlayerData.BuffType = PlayerData.BuffType.NONE) -> void:
@@ -160,7 +160,7 @@ func find_target() -> void:
 		
 func update_nav_agent() -> void:
 	find_target()
-	nav_agent.target_position = target.position
+	nav_agent.target_position = target.global_position
 
 func _on_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity

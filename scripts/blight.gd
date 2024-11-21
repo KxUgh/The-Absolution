@@ -31,11 +31,11 @@ func _physics_process(delta: float) -> void:
 	since_last_attack += delta
 	since_last_hit += delta
 	
-	if get_distance_to_target() > 200:
+	if get_distance_to_target() > 150:
 		return
 	
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()
-	var direction: Vector2 = position.direction_to(next_path_position)
+	var direction: Vector2 = global_position.direction_to(next_path_position)
 	
 	nav_agent.set_velocity(direction * speed)
 	
@@ -85,7 +85,7 @@ func process_state(previous_state: State) -> void:
 func get_navigation_direction() -> Vector2:
 	if not target:
 		return Vector2.ZERO
-	nav_agent.target_position = target.position
+	nav_agent.target_position = target.global_position
 	if nav_agent.is_navigation_finished():
 		return Vector2.ZERO
 	var next_position: Vector2 = nav_agent.get_next_path_position()
@@ -94,7 +94,7 @@ func get_navigation_direction() -> Vector2:
 
 func get_distance_to_target() -> float:
 	if target:
-		return (target.position - position).length()
+		return (target.global_position - global_position).length()
 	return INF
 	
 func take_damage(damage: float, _type: Entity_type, _buff: PlayerData.BuffType = PlayerData.BuffType.NONE) -> void:

@@ -1,12 +1,15 @@
-[gd_scene load_steps=20 format=4 uid="uid://ddx0wisut4h0t"]
+[gd_scene load_steps=23 format=4 uid="uid://ddx0wisut4h0t"]
 
 [ext_resource type="Texture2D" uid="uid://svyog8juti0y" path="res://assets/Textures/Purp TX Tileset Grass.png" id="1_att47"]
 [ext_resource type="Script" path="res://scripts/navigation_layer.gd" id="2_wbhud"]
 [ext_resource type="Texture2D" uid="uid://cuj31mut0nme1" path="res://assets/Textures/Black TX Tileset Wall.png" id="2_xrmsa"]
 [ext_resource type="Texture2D" uid="uid://bx3w25xd6lwgv" path="res://assets/Textures/Black TX Struct.png" id="3_8057k"]
 [ext_resource type="Texture2D" uid="uid://dyxmroeokc1dy" path="res://assets/Textures/Black TX Tileset Stone Ground.png" id="4_1wbnt"]
-[ext_resource type="Texture2D" uid="uid://cgww300ig2xyx" path="res://assets/Textures/Black TX Plant.png" id="5_b7r1t"]
+[ext_resource type="Texture2D" uid="uid://cgww300ig2xyx" path="res://assets/Black TX Plant.png" id="5_b7r1t"]
 [ext_resource type="Texture2D" uid="uid://b544qnikqelmr" path="res://assets/Textures/Black TX Props.png" id="6_ncyys"]
+[ext_resource type="PackedScene" uid="uid://bqleg54jhoh23" path="res://scenes/gheist.tscn" id="8_ah3yu"]
+[ext_resource type="PackedScene" uid="uid://cxe72q12qtfg2" path="res://scenes/blight.tscn" id="9_skpk5"]
+[ext_resource type="PackedScene" uid="uid://b5kw1q1btp5t4" path="res://scenes/zombie.tscn" id="10_selue"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ek4bi"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -1161,3 +1164,15 @@ tile_set = SubResource("TileSet_cdorl")
 z_index = 10
 tile_map_data = PackedByteArray("AAD///z/BAACAA8AAAAAAPz/BAABAA8AAAD6//7/BQAJAAcAAAD6////BQAJAAgAAAD8//7/BQAJAAcAAAD8////BQAJAAgAAAD8/wIABAAGAAAAAAD8/wMABAAGAAEAAAADAP7/BQAJAAcAAAADAP//BQAJAAgAAAAFAP7/BQAJAAcAAAAFAP//BQAJAAgAAAADAAIABAAKAAAAAAADAAMABAAKAAEAAAD8//X/BAAFAAAAAAD8//b/BAAFAAEAAAD8//f/BAAFAAIAAAD8//j/BAAFAAMAAAD9//X/BAAGAAAAAAD9//b/BAAGAAEAAAD9//f/BAAGAAIAAAD9//j/BAAGAAMAAAD9//n/BAAGAAQAAAD+//X/BAAHAAAAAAD+//b/BAAHAAEAAAD+//f/BAAHAAIAAAD+//j/BAAHAAMAAAABAPX/BAAFAAAAAAABAPb/BAAFAAEAAAABAPf/BAAFAAIAAAABAPj/BAAFAAMAAAACAPX/BAAGAAAAAAACAPb/BAAGAAEAAAACAPf/BAAGAAIAAAACAPj/BAAGAAMAAAACAPn/BAAGAAQAAAADAPX/BAAHAAAAAAADAPb/BAAHAAEAAAADAPf/BAAHAAIAAAADAPj/BAAHAAMAAAD7/wIABAAFAAAAAAD7/wMABAAFAAEAAAD7/wQABAAFAAIAAAD7/wUABAAFAAMAAAD8/wQABAAGAAIAAAD8/wUABAAGAAMAAAD8/wYABAAGAAQAAAD9/wIABAAHAAAAAAD9/wMABAAHAAEAAAD9/wQABAAHAAIAAAD9/wUABAAHAAMAAAACAAMABAAJAAEAAAACAAQABAAJAAIAAAACAAUABAAJAAMAAAADAAQABAAKAAIAAAADAAUABAAKAAMAAAADAAYABAAKAAQAAAAEAAIABAALAAAAAAAEAAMABAALAAEAAAAEAAQABAALAAIAAAAEAAUABAALAAMAAAD7//n/BQAOAAMAAAD7//r/BQAOAAQAAAAEAPn/BQAOAAMAAAAEAPr/BQAOAAQAAAD9//z/BQACAAcAAAD+//z/BQADAAcAAAABAPz/BQADAAUAAAA=")
 tile_set = SubResource("TileSet_cdorl")
+
+[node name="Gheist" parent="." instance=ExtResource("8_ah3yu")]
+position = Vector2(-34, 26)
+
+[node name="Gheist2" parent="." instance=ExtResource("8_ah3yu")]
+position = Vector2(27, 27)
+
+[node name="Blight" parent="." instance=ExtResource("9_skpk5")]
+position = Vector2(-3, 67)
+
+[node name="Zombie" parent="." instance=ExtResource("10_selue")]
+position = Vector2(0, -111)

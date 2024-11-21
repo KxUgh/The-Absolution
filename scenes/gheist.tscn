@@ -343,6 +343,7 @@ animations = [{
 }]
 
 [node name="Gheist" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "nav_timer", "weapon", "sprite")]
+z_index = 1
 collision_layer = 4
 collision_mask = 11
 motion_mode = 1
@@ -354,11 +355,11 @@ nav_timer = NodePath("NavigationTimer")
 weapon = NodePath("GheistBlades")
 sprite = NodePath("AnimatedSprite2D")
 teleport_distance = 75.0
-attack_cooldown = 3.0
-channeling_duration = 1.0
-attack_duration = 1.0
+attack_cooldown = 1.0
+channeling_duration = 0.2
+attack_duration = 0.2
 hit_cooldown = 1.0
-disappear_duration = 1.0
+disappear_duration = 0.2
 appear_duration = 1.0
 speed = 100.0
 entity_type = 2

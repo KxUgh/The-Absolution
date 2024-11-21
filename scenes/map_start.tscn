@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/navigation_layer.gd" id="2_f4way"]
 [ext_resource type="Texture2D" uid="uid://5gh0diphv6n4" path="res://assets/Textures/Purp TX Shadow Plant.png" id="2_t1e1e"]
 [ext_resource type="Texture2D" uid="uid://b544qnikqelmr" path="res://assets/Textures/Black TX Props.png" id="3_job6b"]
-[ext_resource type="Texture2D" uid="uid://cgww300ig2xyx" path="res://assets/Textures/Black TX Plant.png" id="4_i2831"]
+[ext_resource type="Texture2D" uid="uid://cgww300ig2xyx" path="res://assets/Black TX Plant.png" id="4_i2831"]
 [ext_resource type="Texture2D" uid="uid://do22wrpr3ydhr" path="res://assets/Textures/Purp TX Shadow.png" id="5_5lhgj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2rkxx"]

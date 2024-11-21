@@ -29,6 +29,8 @@ signal health_changed()
 @onready var since_last_hit: float = hit_duration
 @onready var since_last_blight_attack: float = blight_attack_cooldown
 @onready var state: State = State.IDLE
+@onready var death_screen: PackedScene = load("res://scenes/death_screen.tscn")
+@onready var previous_buff = player_data.buff
 
 func _ready() -> void:
 	player_data.health = player_data.max_health
@@ -111,9 +113,18 @@ func process_state(previous_state: State) -> void:
 		State.DEAD_INQUISITION:
 			if sprite.animation != "Death_Inquisition":
 				sprite.play("Death_Inquisition")
+			if not sprite.is_playing():
+				get_tree().change_scene_to_packed(death_screen)
 		State.DEAD_MONSTER:
 			if sprite.animation != "Death_Monster":
 				sprite.play("Death_Monster")
+			if not sprite.is_playing():
+				if player_data.buff != previous_buff:
+					player_data.health = player_data.max_health
+					health_changed.emit()
+					state = State.IDLE
+				else:
+					get_tree().change_scene_to_packed(death_screen)
 		
 
 func can_attack() -> bool:
@@ -129,8 +140,9 @@ func take_damage(damage: float, type: Entity_type, buff: PlayerData.BuffType = P
 		return
 	state = State.HIT
 	since_last_hit = 0
+	var last_health: float = player_data.health
 	player_data.health -= damage
-	if player_data.buff == PlayerData.BuffType.ZOMBIE and player_data.health > 1:
+	if player_data.buff == PlayerData.BuffType.ZOMBIE and last_health > 1:
 		player_data.health = clampf(player_data.health,1,player_data.max_health)
 	else:
 		player_data.health = clampf(player_data.health,0,player_data.max_health)
@@ -139,6 +151,7 @@ func take_damage(damage: float, type: Entity_type, buff: PlayerData.BuffType = P
 		die(type, buff)
 
 func die(type: Entity_type, buff: PlayerData.BuffType) -> void:
+	previous_buff = player_data.buff
 	player_data.buff = buff
 	Common.save_player_data(player_data)
 	match type:
