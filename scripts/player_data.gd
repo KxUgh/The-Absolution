@@ -3,6 +3,8 @@ extends Resource
 
 enum BuffType{
 	NONE,
+	ZOMBIE,
+	BLIGHT,
 }
 
 @export var max_health: float = 10

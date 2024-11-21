@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://dv80f7odxptib"]
+[gd_scene load_steps=93 format=3 uid="uid://dv80f7odxptib"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_lyb3v"]
 [ext_resource type="Texture2D" uid="uid://bv2my8cgx3ahk" path="res://assets/dwarf_idle.png" id="3_56bcf"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bj8kv424kw1mv" path="res://assets/dwarf_death_inquisition.png" id="7_lkc2n"]
 [ext_resource type="Texture2D" uid="uid://b8mstd8vd5lyj" path="res://assets/dwarf_death_monster.png" id="8_5wkba"]
 [ext_resource type="Texture2D" uid="uid://dcx8ypubepdwr" path="res://assets/dwarf_hit.png" id="9_n0k06"]
+[ext_resource type="PackedScene" uid="uid://ce053lf3ffoit" path="res://scenes/blight_weapon.tscn" id="13_lywlc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ev54u"]
 radius = 6.0
@@ -609,7 +610,7 @@ animations = [{
 "speed": 4.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "weapon") groups=["Players"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "weapon", "blight_weapon") groups=["Players"]]
 collision_layer = 2
 collision_mask = 29
 motion_mode = 1
@@ -619,11 +620,13 @@ platform_floor_layers = 4294901761
 script = ExtResource("1_lyb3v")
 sprite = NodePath("AnimatedSprite")
 weapon = NodePath("Hammer")
+blight_weapon = NodePath("BlightWeapon")
 attack_cooldown = 1.0
 attack_duration = 0.25
 block_cooldown = 1.0
 block_duration = 1.0
 hit_duration = 2.0
+blight_attack_cooldown = 10.0
 max_health = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -638,3 +641,6 @@ sprite_frames = SubResource("SpriteFrames_g5bci")
 animation = &"Block_Right"
 autoplay = "Idle"
 offset = Vector2(0, -15)
+
+[node name="BlightWeapon" parent="." node_paths=PackedStringArray("weapon_owner") instance=ExtResource("13_lywlc")]
+weapon_owner = NodePath("..")

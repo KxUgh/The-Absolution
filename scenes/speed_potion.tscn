@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://i2387ppnrwxf"]
+
+[ext_resource type="Script" path="res://scripts/potion.gd" id="1_w43w1"]
+[ext_resource type="Texture2D" uid="uid://bqer47w2ofhmv" path="res://assets/item_atlas.png" id="2_h6dpr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1mse8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu7fv"]
+atlas = ExtResource("2_h6dpr")
+region = Rect2(96, 240, 16, 16)
+
+[node name="SpeedPotion" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_w43w1")
+type = 2
+value = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1mse8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_iu7fv")

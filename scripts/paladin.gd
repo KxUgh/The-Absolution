@@ -10,17 +10,20 @@ enum State{
 	DEAD,
 }
 
+@export var potions: Array[PackedScene]
 @export var nav_agent: NavigationAgent2D
 @export var nav_timer: Timer
 @export var sword: Weapon
 @export var smiter: Weapon
 @export var sprite: AnimatedSprite2D
 @export var attack_cooldown: float
+@export var smite_cooldown: float
 @export var channeling_duration: float
 @export var attack_duration: float
 @export var hit_cooldown: float
 
 @onready var since_last_attack = attack_cooldown
+@onready var since_last_smite = 0
 @onready var since_last_hit = hit_cooldown
 @onready var state = State.IDLE
 
@@ -34,6 +37,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	since_last_attack += delta
 	since_last_hit += delta
+	since_last_smite += delta
 	
 	if get_distance_to_target() > 200:
 		return
@@ -52,14 +56,14 @@ func determine_state() -> State:
 	if state == State.DEAD:
 		return State.DEAD
 		
-	if state in [State.CHANNELING_SMITE, State.SMITING] and channeling_duration < since_last_attack and since_last_attack < attack_duration + channeling_duration:
+	if state in [State.CHANNELING_SMITE, State.SMITING] and channeling_duration < since_last_smite and since_last_smite < attack_duration + channeling_duration:
 		return State.SMITING
 	
 	if state in [State.CHANNELING, State.ATTACKING] and channeling_duration < since_last_attack and since_last_attack < attack_duration + channeling_duration:
 		return State.ATTACKING
 	
 
-	if target is Player and ((get_distance_to_target() < 100 and can_attack()) or (since_last_attack < channeling_duration and state == State.CHANNELING_SMITE)):
+	if target is Player and ((get_distance_to_target() < 100 and can_smite()) or (since_last_smite < channeling_duration and state == State.CHANNELING_SMITE)):
 		return State.CHANNELING_SMITE
 
 	if (get_distance_to_target() < 100 and can_attack()) or (since_last_attack < channeling_duration and state == State.CHANNELING):
@@ -87,7 +91,7 @@ func process_state(previous_state: State) -> void:
 				sword.attack(position,attack_position)
 		State.CHANNELING_SMITE:
 			if previous_state != state:
-				since_last_attack = 0
+				since_last_smite = 0
 				Common.play_sprite_animation_duration(sprite, "Channel_Smite", channeling_duration)
 		State.SMITING:
 			if previous_state != state:
@@ -123,7 +127,7 @@ func get_distance_to_target() -> float:
 		return (target.position - position).length()
 	return INF
 	
-func take_damage(damage: float, _type: Entity_type) -> void:
+func take_damage(damage: float, _type: Entity_type, _buff: PlayerData.BuffType = PlayerData.BuffType.NONE) -> void:
 	if state in [State.DEAD] or since_last_hit < hit_cooldown:
 		return
 	since_last_hit = 0
@@ -137,10 +141,17 @@ func take_damage(damage: float, _type: Entity_type) -> void:
 		die()
 
 func die() -> void:
+	if RandomNumberGenerator.new().randf() < get_potion_probability():
+		var potion: Potion = potions.pick_random().instantiate()
+		potion.position = position
+		get_node("/root/Node2D").add_child(potion)
 	state = State.DEAD
 	
 func can_attack() -> bool:
 	return since_last_attack > attack_cooldown
+	
+func can_smite() -> bool:
+	return since_last_smite > smite_cooldown
 	
 func find_target() -> void:
 	var players = get_tree().get_nodes_in_group("Players")
