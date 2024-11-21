@@ -7,6 +7,7 @@ enum State{
 	DEAD,
 }
 
+@export var potions: Array[PackedScene]
 @export var nav_agent: NavigationAgent2D
 @export var nav_timer: Timer
 @export var weapon: Weapon
@@ -29,6 +30,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	since_last_attack += delta
 	since_last_hit += delta
+	
+	if get_distance_to_target() > 200:
+		return
 	
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()
 	var direction: Vector2 = position.direction_to(next_path_position)
@@ -63,7 +67,7 @@ func process_state(previous_state: State) -> void:
 			if previous_state != state:
 				since_last_attack = 0
 				Common.play_sprite_animation_duration(sprite, "Attack", attack_duration)
-				weapon.attack(position,attack_position)
+				weapon.attack(position,target.position)
 		State.MOVING:
 			move_and_slide()
 			if velocity.x > 0:
@@ -93,20 +97,21 @@ func get_distance_to_target() -> float:
 		return (target.position - position).length()
 	return INF
 	
-func take_damage(damage: float, _type: Entity_type) -> void:
+func take_damage(damage: float, _type: Entity_type, _buff: PlayerData.BuffType = PlayerData.BuffType.NONE) -> void:
 	if state in [State.DEAD] or since_last_hit < hit_cooldown:
 		return
 	since_last_hit = 0
 	var previous_health: float = health
 	health -= damage
-	if previous_health > 1:
-		health = clampf(health,1,max_health)
-	else:
-		health = clampf(health,0,max_health)
+	health = clampf(health,0,max_health)
 	if health == 0:
 		die()
 
 func die() -> void:
+	if RandomNumberGenerator.new().randf() < get_potion_probability():
+		var potion: Potion = potions.pick_random().instantiate()
+		potion.position = position
+		get_node("/root/Node2D").add_child(potion)
 	state = State.DEAD
 	
 func can_attack() -> bool:

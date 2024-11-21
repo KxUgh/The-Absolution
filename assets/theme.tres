@@ -58,3 +58,4 @@ Button/styles/hover = SubResource("StyleBoxTexture_67m2n")
 Button/styles/normal = SubResource("StyleBoxTexture_itwls")
 Button/styles/pressed = SubResource("StyleBoxTexture_3go0m")
 Label/font_sizes/font_size = 5
+Label/fonts/font = ExtResource("1_m51eg")

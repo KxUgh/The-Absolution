@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://ifrsl6yeqjgo"]
+
+[ext_resource type="Script" path="res://scripts/potion.gd" id="1_fql42"]
+[ext_resource type="Texture2D" uid="uid://bqer47w2ofhmv" path="res://assets/item_atlas.png" id="2_55nyr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1mse8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu7fv"]
+atlas = ExtResource("2_55nyr")
+region = Rect2(80, 240, 16, 16)
+
+[node name="HealthPotion" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_fql42")
+value = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1mse8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_iu7fv")
